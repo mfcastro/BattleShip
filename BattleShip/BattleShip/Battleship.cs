@@ -12,6 +12,7 @@ namespace BattleShip
         public Battleship()
         {
             this.sizeOfShip = 4;
+            this.shipName = "Battleship";
         }
     }
 }

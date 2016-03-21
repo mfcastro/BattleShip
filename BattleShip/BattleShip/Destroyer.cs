@@ -10,7 +10,8 @@ namespace BattleShip
     {
         public Destroyer()
         {
-            this.sizeOfShip = 3;
-        }
+            this.sizeOfShip = 2;
+            this.shipName = "Destroyer";
+    }
     }
 }

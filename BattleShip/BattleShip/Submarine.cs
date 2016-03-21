@@ -11,6 +11,7 @@ namespace BattleShip
         public Submarine()
         {
             this.sizeOfShip = 3;
+            this.shipName = "Submarine";
         }
     }
 }

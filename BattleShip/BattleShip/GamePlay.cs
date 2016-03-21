@@ -8,6 +8,9 @@ namespace BattleShip
 {
     class GamePlay
     {
+        Ship[] gamepieces = new Ship[5];
+
+
 
     }
 }
