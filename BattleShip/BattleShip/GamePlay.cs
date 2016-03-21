@@ -80,16 +80,24 @@ namespace BattleShip
             foreach(Ship piece in gamepieces)
             {
                 player.moveShipOnMap(map, piece);
-                piece.AddShipToMap(map);
+                piece.AddShipToMap(map, piece);
             }
             
+            /*
+            for(int piece = 0; piece < gamepieces.Length; piece++)
+            {
+                player.moveShipOnMap(map, gamepieces[piece]);
+                gamepieces[piece].AddShipToMap(map, gamepieces[piece].gamePiece);
+            }
+            */
+
         }
 
  
 
         public void prepareStartMap()
         {
-            map.fillMap(10,10);
+            map.fillMap(11,11);
             map.drawMap();
         }
 

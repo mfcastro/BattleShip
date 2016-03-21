@@ -62,7 +62,7 @@ namespace BattleShip
                  
                     else
                     {
-                        map[row].Add("X");
+                        map[row].Add("?");
                     }
                     
                 }

@@ -21,11 +21,11 @@ namespace BattleShip
         public bool pieceIsThere = false;
 
 
-        public void AddShipToMap(Map map)
+        public void AddShipToMap(Map map, Ship ship)
         {   
             for(int i = 0; i<this.sizeOfShip; i++)
             {
-                map.map[yCoordinate][xCoordinate + i] = "O";
+                map.map[yCoordinate][xCoordinate + i] = ship.gamePiece;
             }
             map.drawMap();
         }
@@ -37,7 +37,7 @@ namespace BattleShip
             {
                 for (int i = 0; i < this.sizeOfShip; i++)
                 {
-                    map.map[this.yCoordinate][this.xCoordinate + i] = "X";
+                    map.map[this.yCoordinate][this.xCoordinate + i] = "?";
                     map.map[this.yCoordinate + 1][this.xCoordinate + i] = ship.gamePiece;
                 }
 
@@ -55,7 +55,7 @@ namespace BattleShip
                     map.map[this.yCoordinate+i+1][this.xCoordinate] = ship.gamePiece;
 
                 }
-                map.map[this.yCoordinate][this.xCoordinate] = "X";
+                map.map[this.yCoordinate][this.xCoordinate] = "?";
 
                 this.yCoordinate += 1;
 
@@ -77,7 +77,7 @@ namespace BattleShip
                 {
                     for (int i = 0; i < this.sizeOfShip; i++)
                     {
-                        map.map[this.yCoordinate][this.xCoordinate + i] = "X";
+                        map.map[this.yCoordinate][this.xCoordinate + i] = "?";
                         map.map[this.yCoordinate - 1][this.xCoordinate + i] = ship.gamePiece;
 
                     }
@@ -95,7 +95,7 @@ namespace BattleShip
                     map.map[this.yCoordinate + i - 1][this.xCoordinate] = ship.gamePiece;
 
                 }
-                map.map[this.yCoordinate + this.sizeOfShip - 1][this.xCoordinate] = "X";
+                map.map[this.yCoordinate + this.sizeOfShip - 1][this.xCoordinate] = "?";
 
                 this.yCoordinate -= 1;
             }
@@ -111,7 +111,7 @@ namespace BattleShip
             {
                 for (int i = 0; i < this.sizeOfShip; i++)
                 {
-                    map.map[this.yCoordinate][this.xCoordinate] = "X";
+                    map.map[this.yCoordinate][this.xCoordinate] = "?";
                     map.map[this.yCoordinate][this.xCoordinate + i + 1] = ship.gamePiece;
 
                 }
@@ -125,7 +125,7 @@ namespace BattleShip
                 //move right if vertical -  WORKS!!! JUST NEED TO CHECK EDGES OF MAP
                 for (int i = 0; i < this.sizeOfShip; i++)
                 {
-                    map.map[this.yCoordinate + i][this.xCoordinate] = "X";
+                    map.map[this.yCoordinate + i][this.xCoordinate] = "?";
                     map.map[this.yCoordinate + i][this.xCoordinate + 1] = ship.gamePiece;
                 }
 
@@ -157,7 +157,7 @@ namespace BattleShip
                             map.map[this.yCoordinate][this.xCoordinate + i - 1] = ship.gamePiece;
 
                         }
-                        map.map[this.yCoordinate][this.xCoordinate + this.sizeOfShip - 1] = "X";
+                        map.map[this.yCoordinate][this.xCoordinate + this.sizeOfShip - 1] = "?";
 
                         this.xCoordinate -= 1;
 
@@ -167,7 +167,7 @@ namespace BattleShip
                     //move left if horizontal - WORKS JUST NEED TO CHECK IF AT LEFT OF MAP
                     for (int i = 0; i < this.sizeOfShip; i++)
                     {
-                        map.map[this.yCoordinate + i][this.xCoordinate] = "X";
+                        map.map[this.yCoordinate + i][this.xCoordinate] = "?";
                         map.map[this.yCoordinate + i][this.xCoordinate - 1] = ship.gamePiece;
                     }
 
@@ -201,7 +201,7 @@ namespace BattleShip
             {
                 for(int j = 0; j< this.sizeOfShip; j++)
                 {
-                    map.map[this.yCoordinate][this.yCoordinate + i+1] = "X";
+                    map.map[this.yCoordinate][this.yCoordinate + i+1] = "?";
                     map.map[this.yCoordinate + j][this.xCoordinate] = ship.gamePiece;
                 }
                 
@@ -219,7 +219,7 @@ namespace BattleShip
             {
                 for (int j = 0; j < this.sizeOfShip; j++)
                 {
-                    map.map[this.yCoordinate + i + 1][this.yCoordinate] = "X";
+                    map.map[this.yCoordinate + i + 1][this.yCoordinate] = "?";
                     map.map[this.yCoordinate][this.xCoordinate + j] = ship.gamePiece;
                 }
 

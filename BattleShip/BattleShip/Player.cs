@@ -27,7 +27,7 @@ namespace BattleShip
             {
                 try
                 {
-                    Console.WriteLine("Where do you want to move your {0}?", ship.shipName);
+                    Console.WriteLine("Player {0}: Where do you want to move your {1}?",this.playerNumber, ship.shipName);
                     string control = Console.ReadLine();
 
                     if (control.Equals("x"))
