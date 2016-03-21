@@ -13,6 +13,7 @@ namespace BattleShip
         {
             this.sizeOfShip = 2;
             this.shipName = "Patrol Boat";
+            this.gamePiece = "P";
 
         }
 

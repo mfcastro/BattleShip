@@ -13,6 +13,7 @@ namespace BattleShip
         {
             this.sizeOfShip = 4;
             this.shipName = "Battleship";
+            this.gamePiece = "B";
         }
     }
 }

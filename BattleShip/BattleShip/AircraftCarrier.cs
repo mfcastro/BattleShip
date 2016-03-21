@@ -12,6 +12,7 @@ namespace BattleShip
         {
             this.sizeOfShip = 5;
             this.shipName = "Aircraft Carrier";
+            this.gamePiece = "A";
         }
     }
 }
