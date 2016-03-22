@@ -24,14 +24,35 @@ namespace BattleShip
 
             gamePlay.startMenu(player1);
 
-            //gamePlay.startMenu(player2);
-            //Console.WriteLine();
-            //map.fillMap(11, 11);
-            //map.drawMap();
+            gamePlay.startMenu(player2);
+
+            gamePlay.turnSwitcher(player1, player2);
+
+
+            //gamePlay.attackPlayer(player1);
+
+            //gamePlay.attackPlayer(player2);
+
+
+
+
             Console.WriteLine();
+            Console.WriteLine("Player 1 Map:");
+            player1.map.drawMap();
 
-         // player.moveShipOnMap(map, air);
+            Console.WriteLine();
+            Console.WriteLine("Player 2 Map: ");
+            player2.map.drawMap();
 
+
+
+           // Console.WriteLine();
+           // map.fillMap(11, 11);
+           // map.drawMap();
+            //Console.WriteLine();
+
+         //player1.moveShipOnMap(map, air);
+           // gamePlay.attackPlayer(player1);
 
             Console.ReadLine();
 

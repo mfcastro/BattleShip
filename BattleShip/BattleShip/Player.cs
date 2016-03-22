@@ -44,7 +44,7 @@ namespace BattleShip
                     {
                         moveShip = setHere;
                         CoorLogi.saveShipCoordinate(map, ship);
-                        CoorLogi.printShipCoordinates();
+                       // CoorLogi.printShipCoordinates();
 
                     }
                     else if (control.Equals("w"))
@@ -88,17 +88,8 @@ namespace BattleShip
             setHere = false;
         }
 
-        public void setPieceOnMap()
-        {
-            if (setHere == true)
-            {
-
-            }
-            else if (setHere == false){
-                
-            }
-
-        }
+       
+       
 
 
     }
