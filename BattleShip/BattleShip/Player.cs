@@ -11,18 +11,20 @@ namespace BattleShip
         public string name;
         bool moveShip = true;
         bool setHere = false;
-        int playerNumber = 0;
+        int playerNumber;
 
         public Map map = new Map();
         public CoordinateLogistic CoorLogi = new CoordinateLogistic();
 
+        public Map mapThatOpponentSees= new Map();
 
 
-        public Player(string name){
+        public Player(string name, int playerNumber){
             this.name = name;
             this.playerNumber++;
             Map map = new Map();
-
+            Map mapThatOpponentSees = new Map();
+            this.playerNumber = playerNumber;
         }
 
 

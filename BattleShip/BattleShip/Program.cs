@@ -12,19 +12,21 @@ namespace BattleShip
         {
             GamePlay gamePlay = new GamePlay();
 
-            Player player1 = new Player("Player 1");
-            Player player2 = new Player("Player 2");
+            Player player1 = new Player("Player 1", 1);
+            Player player2 = new Player("Player 2", 2);
 
-            Map map = new Map();
+            //Map map = new Map();
             //PatrolBoat patrolBoat = new PatrolBoat();
-            AircraftCarrier air = new AircraftCarrier();
+            //AircraftCarrier air = new AircraftCarrier();
             //Battleship battle = new Battleship();
             //Destroyer destroyer = new Destroyer();
             // Submarine sub = new Submarine();
 
             gamePlay.startMenu(player1);
 
-            gamePlay.startMenu(player2);
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------");
+
+            gamePlay.gameMenu(player2);
 
             gamePlay.turnSwitcher(player1, player2);
 

@@ -15,36 +15,40 @@ namespace BattleShip
        public int xcoord = 0;
        public int ycoord = 0;
         bool noWinner = true;
+        string[] controlMenu = {"[w] move ship up" , "[s] move ship down" , "[d] move ship right" , "[a] move ship right" , 
+                              "[r] rotate ship vertical or horizontal", "[q] place ship" , "[m] game menu"}; 
 
-
-        public void getGamePieces()
-        {
-
-        }
-        
+ 
         public void startMenu(Player player)
         {
             Console.WriteLine("WELCOME TO BATTLESHIP!");
             Console.WriteLine();
-            Console.WriteLine("Play [p] Instructions [i]");
+            Console.WriteLine("Play [p] Instructions [i] Controls [c]");
             string selection = Console.ReadLine();
-            Console.WriteLine();
+           
 
             if (selection.Equals("p"))
             {
+
                 
-                Console.WriteLine("What is your name: ");
+
+               /* Console.WriteLine("What is your name: ");
                 player.name = Console.ReadLine();
 
                 Console.WriteLine();
                 Console.WriteLine("Hello {0}! Arrange your Ships on your grid below.", player.name);
                 Console.WriteLine();
-
+                */
                 gameMenu(player);
             }
             else if (selection.Equals("i"))
             {
                 getGameInstructions();
+                startMenu(player);
+            }
+            else if (selection.Equals("c"))
+            {
+                getControlMenu();
                 startMenu(player);
             }
             else{
@@ -54,8 +58,25 @@ namespace BattleShip
 
         }
 
+        private void getControlMenu()
+        {
+            Console.WriteLine("Available Game Controls: ");
+            Console.WriteLine();
+
+            foreach(string control in controlMenu)
+            {
+                Console.WriteLine(control);
+            }
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------");
+            Console.WriteLine();
+        }
+
         public void getGameInstructions()
         {
+            Console.WriteLine("GAME RULES: ");
+
+            Console.WriteLine();
+
             Console.WriteLine("Before play begins, each player secretly arranges their ships on their primary grid. Each " 
                 + "\nship occupies a number of consecutive spaces on the grid, arranged either horizontally or" 
                 + "\nvertically. The number of squares for each ship is determined by the type of the ship. The "
@@ -74,11 +95,22 @@ namespace BattleShip
 
             Console.WriteLine();
 
-            Console.WriteLine("When all of the squares of a ship have been hit, the ship is sunk, and the ship's owner announces" 
+            Console.WriteLine("When all of the squares of a ship have been hit, the ship is sunk, and the ship's owner announces"
                               + "\nthis (e.g. \"You sank my battleship!\"). If all of a player's ships have been sunk, the game is over"
                               + "\nand their opponent wins");
 
+            Console.WriteLine();
 
+            Console.WriteLine("Type of ship and number of spaces: Aircraft Carrier - 5, Battleship - 4, Submarine - 3;"
+                                +"\n\t\t\t\t   Destroyer - 3; Patrol Boat - 2");
+
+            Console.WriteLine();
+
+
+            Console.WriteLine("Game controls: \t[w] move ship up , [s] move ship down, [d] move ship right, [a] move ship right,"
+                               + "\n\t\t[r] rotate ship vertical or horizontal, [q] place ship [m] game menu");
+
+            Console.WriteLine();
 
             Console.WriteLine("---------------------------------------------------------------------------------------------------------");
             Console.WriteLine();    
@@ -87,8 +119,19 @@ namespace BattleShip
 
         public void gameMenu(Player player)
         {
+            Console.WriteLine();
+            Console.WriteLine("{0}: What is your name: ", player.name);
+            player.name = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.WriteLine("Hello {0}! Arrange your Ships on your grid below.", player.name);
+            Console.WriteLine();
+
+
+
+
             prepareStartMap(player);
-            
+            prepareOpponetViewMenu(player); // might have to change to it being player 2's
 
             foreach(Ship piece in gamepieces)
             {
@@ -130,6 +173,11 @@ namespace BattleShip
 
         }
 
+        private void prepareOpponetViewMenu(Player player)
+        {
+            player.mapThatOpponentSees.fillMap(11, 11);
+        }
+
         public void resetShipPlacement(Ship ship, Player player)
         {
             player.map.map[ship.yCoordinate][ship.xCoordinate + ship.sizeOfShip - 1] = "X";
@@ -144,10 +192,20 @@ namespace BattleShip
             player.map.drawMap();
         }
 
+        public void getAttackMap(Player player)
+        {
+            player.map.fillMap(11, 11);
+            player.map.drawMap();
+        }
+
+
+
 
         public void attackPlayer(Player player)
         {
-            Console.WriteLine("Enter Coordinates: ");
+            player.mapThatOpponentSees.drawMap();
+
+            Console.WriteLine("Enter Coordinates to attack [ex. a1]: ");
             string coordinates = Console.ReadLine();
 
             coordinates = coordinates.ToUpper();
@@ -204,15 +262,17 @@ namespace BattleShip
 
             if(hit == true)
             {
-                displayHitShip(player.map);
-                Console.WriteLine("You just HIT a ship!!");
-                
-               
+                //displayHitShip(player.map);
+                displayHitShip(player.mapThatOpponentSees);
+                Console.WriteLine("You just HIT a ship!!"); //Need to remove coordinates from list of coordinates?? 
+                Console.WriteLine();
             }
             else
             {
-                displayMissedShot(player.map);
-                Console.WriteLine("You just missed!");
+                //displayMissedShot(player.map);
+                displayMissedShot(player.mapThatOpponentSees);
+                Console.WriteLine("You just missed!"); // If already hit tell player it has been hit already and reprompt
+                Console.WriteLine();
 
             }
 
@@ -264,13 +324,28 @@ namespace BattleShip
         {
             while (noWinner)
             {
-                Console.WriteLine("Player 1: ");
+                Console.WriteLine("Player 1 attack: ");
                 attackPlayer(player2);
+
 
                 Console.WriteLine();
 
-                Console.WriteLine("Player 2:");
+                Console.WriteLine("Player 2 attack:");
                 attackPlayer(player1);
+
+
+                if(player1.CoorLogi.shipCoordinates.Count == 0)
+                {
+                    Console.WriteLine("Player 2 : {0} Wins!!!", player2.name);
+                    noWinner = false;
+                }
+                else if(player2.CoorLogi.shipCoordinates.Count == 0)
+                {
+                    Console.WriteLine("Player 1 : {0} Wins!!!" , player1.name);
+                    noWinner = false;
+                }
+
+
 
             }
         }
