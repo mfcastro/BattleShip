@@ -8,24 +8,22 @@ namespace BattleShip
 {
     class GamePlay
     {
-        Map map = new Map();
+        //Map map = new Map();
        
 
         Ship[] gamepieces = { new AircraftCarrier(), new Battleship(), new Submarine(), new Destroyer(), new PatrolBoat()};
-       
+        
 
         public void getGamePieces()
         {
 
         }
         
-        public void startMenu()
+        public void startMenu(Player player)
         {
             Console.WriteLine("WELCOME TO BATTLESHIP!");
             Console.WriteLine("What is your name: ");
-            string name = Console.ReadLine();
-
-            Player player = new Player(name);
+            player.name = Console.ReadLine();
 
             Console.WriteLine("Hello {0}!", player.name);
             Console.WriteLine();
@@ -75,12 +73,18 @@ namespace BattleShip
 
         public void gameMenu(Player player)
         {
-            prepareStartMap();
+            prepareStartMap(player);
+            
 
             foreach(Ship piece in gamepieces)
             {
-                player.moveShipOnMap(map, piece);
-                piece.AddShipToMap(map, piece);
+               // piece.xCoordinate = 2;// tells each piece where to start
+              //  piece.yCoordinate = 1;//
+
+               resetShipPlacement(piece, player); // sets the start location at top left corner. 
+
+                player.moveShipOnMap(player.map, piece);
+                //piece.AddShipToMap(player.map, piece);
             }
             
             /*
@@ -91,14 +95,38 @@ namespace BattleShip
             }
             */
 
+            /*
+            for(int i = 0; i< gamepieces.Length; i++)
+            {
+                piece.xCoordinate = 2;// tells each piece where to start
+                 piece.yCoordinate = 1;//
+
+                resetShipPlacement(piece, player);
+
+                for (int j = 0; j < gamepieces.Length; j++)
+                {
+                    player.moveShipOnMap(player.map, piece);
+                    piece.AddShipToMap(player.map, piece);
+                }
+            }*/
+
+
+
+
+        }
+
+        public void resetShipPlacement(Ship ship, Player player)
+        {
+            player.map.map[ship.yCoordinate][ship.xCoordinate + ship.sizeOfShip - 1] = "X";
+
         }
 
  
 
-        public void prepareStartMap()
+        public void prepareStartMap(Player player)
         {
-            map.fillMap(11,11);
-            map.drawMap();
+            player.map.fillMap(11,11);
+            player.map.drawMap();
         }
 
     }

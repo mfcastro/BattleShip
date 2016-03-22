@@ -11,8 +11,10 @@ namespace BattleShip
         static void Main(string[] args)
         {
             GamePlay gamePlay = new GamePlay();
-           gamePlay.startMenu();
-            Player player = new Player("Marco");
+
+            Player player1 = new Player("Player 1");
+            Player player2 = new Player("Player 2");
+
             Map map = new Map();
             //PatrolBoat patrolBoat = new PatrolBoat();
             AircraftCarrier air = new AircraftCarrier();
@@ -20,13 +22,15 @@ namespace BattleShip
             //Destroyer destroyer = new Destroyer();
             // Submarine sub = new Submarine();
 
+            gamePlay.startMenu(player1);
 
-            Console.WriteLine();
-            map.fillMap(11, 11);
-             map.drawMap();
+            //gamePlay.startMenu(player2);
+            //Console.WriteLine();
+            //map.fillMap(11, 11);
+            //map.drawMap();
             Console.WriteLine();
 
-          player.moveShipOnMap(map, air);
+         // player.moveShipOnMap(map, air);
 
 
             Console.ReadLine();

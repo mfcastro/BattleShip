@@ -13,12 +13,18 @@ namespace BattleShip
         bool setHere = false;
         int playerNumber = 0;
 
+        public Map map = new Map();
+        public CoordinateLogistic CoorLogi = new CoordinateLogistic();
+
+
+
         public Player(string name){
             this.name = name;
             this.playerNumber++;
+            Map map = new Map();
+
         }
 
-      
 
         public void moveShipOnMap(Map map, Ship ship)
         {
@@ -27,7 +33,7 @@ namespace BattleShip
             {
                 try
                 {
-                    Console.WriteLine("Player {0}: Where do you want to move your {1}?",this.playerNumber, ship.shipName);
+                    Console.WriteLine("Player {0}: {1} - Where do you want to move your {2}?",this.playerNumber, this.name ,ship.shipName);
                     string control = Console.ReadLine();
 
                     if (control.Equals("x"))
@@ -37,6 +43,9 @@ namespace BattleShip
                     else if (control.Equals("q"))
                     {
                         moveShip = setHere;
+                        CoorLogi.saveShipCoordinate(map, ship);
+                        CoorLogi.printShipCoordinates();
+
                     }
                     else if (control.Equals("w"))
                     {

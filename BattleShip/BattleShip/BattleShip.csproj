@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AircraftCarrier.cs" />
     <Compile Include="Battleship.cs" />
+    <Compile Include="CoordinateLogistic.cs" />
     <Compile Include="Destroyer.cs" />
     <Compile Include="GamePlay.cs" />
     <Compile Include="Map.cs" />

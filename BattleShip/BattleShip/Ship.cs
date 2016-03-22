@@ -12,6 +12,13 @@ namespace BattleShip
         public string shipName = "Ship";
         public string gamePiece;
 
+        public const int startX = 2;
+        public const int startY = 1;
+
+
+        public List<string> shipCoordinates = new List<string>();
+
+
         public int yCoordinate = 1; //column
         public int xCoordinate = 2; //row
         public bool horizontal = true;
@@ -25,7 +32,7 @@ namespace BattleShip
         {   
             for(int i = 0; i<this.sizeOfShip; i++)
             {
-                map.map[yCoordinate][xCoordinate + i] = ship.gamePiece;
+                map.map[startY][startX + i] = ship.gamePiece;
             }
             map.drawMap();
         }
@@ -260,15 +267,7 @@ namespace BattleShip
             return atLeft;
         }
 
-        
 
-
-        public void checkIfPieceIsThere()
-        {
-
-        }
-
-
-
+       
     }
 }
