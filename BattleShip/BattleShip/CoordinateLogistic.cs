@@ -10,7 +10,6 @@ namespace BattleShip
     {
 
         //Dictionary<int, string> nameOfShip = new Dictionary<int, string>() { { 0, "Aircraft Carrier" }, { 1, "Battleship" }, { 2, "Submarine" }, { 3, "Destroyer" }, { 4, "Patrol Boat" } };
-       // List<List<int[]>> shipCoordinates = new List<List<int[]>>();
        public List<List<Tuple<int, int>>> shipCoordinates = new List<List<Tuple<int, int>>>();
 
         public List<Tuple<int, int>> AllCoordinates = new List<Tuple<int, int>>();

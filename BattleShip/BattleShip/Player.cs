@@ -30,6 +30,8 @@ namespace BattleShip
 
         public void moveShipOnMap(Map map, Ship ship)
         {
+            ship.xCoordinate = 2;
+            ship.yCoordinate = 1;
 
             while (moveShip)
             {
@@ -46,7 +48,7 @@ namespace BattleShip
                     {
                         moveShip = setHere;
                         CoorLogi.saveShipCoordinate(map, ship);
-                       // CoorLogi.printShipCoordinates();
+                    
 
                     }
                     else if (control.Equals("w"))
@@ -67,7 +69,6 @@ namespace BattleShip
                     }
                     else if (control.Equals("r"))
                     {
-                        //ship.rotateShipToVertical(map, ship);
                         ship.rotateShip(map, ship);
                     
                     }
@@ -90,13 +91,8 @@ namespace BattleShip
             setHere = false;
         }
 
-       
-       
-
-
     }
 
-
-    }
+}
 
 

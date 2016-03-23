@@ -127,9 +127,6 @@ namespace BattleShip
             Console.WriteLine("Hello {0}! Arrange your Ships on your grid below.", player.name);
             Console.WriteLine();
 
-
-
-
             prepareStartMap(player);
             prepareOpponetViewMenu(player); // might have to change to it being player 2's
 
@@ -264,7 +261,7 @@ namespace BattleShip
             {
                 //displayHitShip(player.map);
                 displayHitShip(player.mapThatOpponentSees);
-                Console.WriteLine("You just HIT a ship!!"); //Need to remove coordinates from list of coordinates?? 
+                Console.WriteLine("\aYou just HIT a ship!!"); //Need to remove coordinates from list of coordinates?? 
                 Console.WriteLine();
             }
             else

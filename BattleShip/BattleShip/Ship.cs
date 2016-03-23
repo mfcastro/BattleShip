@@ -12,8 +12,8 @@ namespace BattleShip
         public string shipName = "Ship";
         public string gamePiece;
 
-        public const int startX = 2;
-        public const int startY = 1;
+        //public const int startX = 2;
+        //public const int startY = 1;
 
 
         public List<string> shipCoordinates = new List<string>();
@@ -32,7 +32,7 @@ namespace BattleShip
         {   
             for(int i = 0; i<this.sizeOfShip; i++)
             {
-                map.map[startY][startX + i] = ship.gamePiece;
+                map.map[1][2 + i] = ship.gamePiece;
             }
             map.drawMap();
         }
@@ -50,8 +50,6 @@ namespace BattleShip
 
                 this.yCoordinate += 1;
 
-               // Console.WriteLine();
-                //map.drawMap();
             }
             else if (vertical == true)
             {
@@ -124,8 +122,6 @@ namespace BattleShip
                 }
                 this.xCoordinate += 1;
 
-
-                
             }
             else if (vertical == true)
             {
@@ -267,10 +263,5 @@ namespace BattleShip
             return atLeft;
         }
 
-
-        
-
-
-       
     }
 }
