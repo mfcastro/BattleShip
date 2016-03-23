@@ -32,6 +32,10 @@ namespace BattleShip
         {
             ship.xCoordinate = 2;
             ship.yCoordinate = 1;
+            ship.atBottom = false;
+            ship.atRight = false;
+            ship.vertical = false;
+            ship.horizontal = true;
 
             while (moveShip)
             {
@@ -80,9 +84,9 @@ namespace BattleShip
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Invalid Entry");
+                    Console.WriteLine("You moved your ship off the map. Please move it back. ");
                     map.drawMap();
-                    moveShipOnMap(map, ship);
+                    //moveShipOnMap(map, ship);
 
                 }
 

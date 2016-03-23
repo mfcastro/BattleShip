@@ -202,7 +202,7 @@ namespace BattleShip
         {
             player.mapThatOpponentSees.drawMap();
 
-            Console.WriteLine("Enter Coordinates to attack [ex. a1]: ");
+            Console.WriteLine("To Attack Enter Coordinates [ex. a1]: ");
             string coordinates = Console.ReadLine();
 
             coordinates = coordinates.ToUpper();
@@ -219,25 +219,52 @@ namespace BattleShip
 
         public Tuple<int, int> seperateCoordinates(string coord, Player player)
         {
-            
+
+            int moreThanOneInt = 1;
+            string currentInt = "";
+            string current;
 
             foreach (char x in coord)
             {
+
                 
+
                 //bool result = integer.TryParse(x.ToString(), out integer);
                 if(int.TryParse(x.ToString(), out xcoord) == true)
                 {
                     //Console.WriteLine("We got an integer");
-                    //xcoord += 2;
+                    //moreThanOneInt++;
+                    current = x.ToString();
+
+                    //Console.WriteLine("moreThanOneInt: {0} , currentInt: {1}", moreThanOneInt, currentInt); //temporary
+
+                    if (moreThanOneInt == 1)
+                    {
+                       // currentInt = xcoord.ToString();
+                      //  Console.WriteLine("Current number {0}", current);
+                        //Console.WriteLine("xcoord: {0}", xcoord);  //temporary
+                        moreThanOneInt = 2;
+                        currentInt += current;
+                    }
+                    else if (moreThanOneInt == 2)
+                    {
+                        xcoord = int.Parse(currentInt + current);
+                        //Console.WriteLine("xcoord should be A10: {0}", xcoord);
+                        
+                    }
+
                 }
                 else
                 {
                    // Console.WriteLine("We got a letter");
-                   
-                    ycoord = player.map.numberCoordinates[x.ToString()];
-                   
+                    ycoord = player.map.numberCoordinates[x.ToString()];  
                 }
- 
+
+
+                
+
+                
+
             }
 
            // Console.WriteLine("[{0},{1}]", ycoord, xcoord);
@@ -269,6 +296,7 @@ namespace BattleShip
                 //displayMissedShot(player.map);
                 displayMissedShot(player.mapThatOpponentSees);
                 Console.WriteLine("You just missed!"); // If already hit tell player it has been hit already and reprompt
+                System.Media.SystemSounds.Question.Play();
                 Console.WriteLine();
 
             }
@@ -321,13 +349,13 @@ namespace BattleShip
         {
             while (noWinner)
             {
-                Console.WriteLine("Player 1 attack: ");
+                Console.WriteLine("Player 1: {0} to attack {1} " , player1.name, player2.name);
                 attackPlayer(player2);
 
 
                 Console.WriteLine();
 
-                Console.WriteLine("Player 2 attack:");
+                Console.WriteLine("Player 2: {0} to attack {1} ", player2.name, player1.name);
                 attackPlayer(player1);
 
 
