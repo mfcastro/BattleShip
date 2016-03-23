@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BattleShip
 {
-    class Player
+   class Player
     {
         public string name;
         bool moveShip = true;
         bool setHere = false;
-        int playerNumber;
+        public int playerNumber;
 
         public Map map = new Map();
         public CoordinateLogistic CoorLogi = new CoordinateLogistic();

@@ -302,6 +302,8 @@ namespace BattleShip
                 }
             }*/
 
+            int shipHit = 0;
+
             for (int ship = 0; ship < player.CoorLogi.shipCoordinates.Count; ship++)
             {
                 for(int shipSection = 0; shipSection < player.CoorLogi.shipCoordinates[ship].Count; shipSection++)
@@ -322,6 +324,8 @@ namespace BattleShip
 
                 if (hit == true)
                 {
+                    shipHit = ship;
+                    Console.WriteLine("Ship: {0}", shipHit); //test 
                     break;
                 }
                 else
@@ -338,7 +342,44 @@ namespace BattleShip
                 //displayHitShip(player.map);
                 displayHitShip(player.mapThatOpponentSees);
                 Console.WriteLine("\aYou just HIT a ship!!"); //Need to remove coordinates from list of coordinates?? 
+                player.CoorLogi.hitCoordinates[shipHit].Add(coord);
+
+
+                player.CoorLogi.checkToSeeIfShipWasSunk(player, shipHit);
+
+
+                //____________________________________________________________________________________________________________
+                Console.WriteLine("Player {0}: {1}",player.playerNumber,player.name);
+                Console.WriteLine("Added to list: {0}", player.CoorLogi.hitCoordinates[shipHit][0]); //Test
+
+               /* for (int ship = 0; ship < player.CoorLogi.hitCoordinates.Count; ship++)
+                {
+                    for(int shipsection = 0; shipsection< player.CoorLogi.hitCoordinates[ship].Count; shipsection++)
+                    {
+                        Console.WriteLine("ship #:  {0} ; Coord: {1} ", shipHit, coord);
+                    }
+                }*/
+
+
+
+                //foreach(List<Tuple<int, int>> list in player.CoorLogi.hitCoordinates)
+                //{
+
+                    //foreach (Tuple<int,int> coords in player.CoorLogi.hitCoordinates[i])
+                    //{
+                        
+                    //}
+                  //  Console.WriteLine("list: {0} ship #:  {1} ; Coord: {2} ", list, shipHit, coord);
+                //}
+
+
+
+                ///_________________________________________________________________________________________________________
+
+
                 Console.WriteLine();
+
+               
             }
             else
             {
@@ -363,6 +404,7 @@ namespace BattleShip
                 //Console.WriteLine(map.map.Count);
 
                 map.map[this.xcoord][this.ycoord] = "*";
+
                 map.drawMap();
                 
                 
@@ -427,7 +469,15 @@ namespace BattleShip
         }
 
 
+        /*public void colorMap(Player player)
+        {
+            if (player.map.Equals("*"))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
 
+
+            }
+        }*/
         
 
 

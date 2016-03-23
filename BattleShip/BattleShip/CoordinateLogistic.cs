@@ -11,6 +11,8 @@ namespace BattleShip
 
         Dictionary<string, int> nameOfShip = new Dictionary<string, int>() { {"Aircraft Carrier",0 }, {"Battleship",1 }, {"Submarine",2 }, {"Destroyer",3 }, {"Patrol Boat",4 } };
 
+        Dictionary<int, string> typeOfShip = new Dictionary<int, string>() { {0, "Aircraft Carrier"}, {1, "Battleship"}, {2, "Submarine"}, {3, "Destroyer"}, {4, "Patrol Boat"} };
+
         public List<List<Tuple<int, int>>> shipCoordinates = new List<List<Tuple<int, int>>>();
 
         public List<Tuple<int, int>> AllCoordinates = new List<Tuple<int, int>>();
@@ -49,8 +51,8 @@ namespace BattleShip
 
             int shipNumber = nameOfShip[ship.shipName];
 
-            Console.WriteLine("Ship name : {0} ship number: {1}", ship.shipName, shipNumber); // temporary
-            Console.WriteLine("****************************************************************");
+            //Console.WriteLine("Ship name : {0} ship number: {1}", ship.shipName, shipNumber); // temporary
+            //Console.WriteLine("****************************************************************");
             
 
             if(ship.horizontal == true)
@@ -101,6 +103,42 @@ namespace BattleShip
                         
                 }
             }
+        }
+
+
+        public void checkToSeeIfShipWasSunk(Player player, int hitShip)
+        {
+           
+            int hits = 0;
+            //WILL ONLY SHOW WHEN AIRCRAFT CARRIER IS SUNK!!! NEED TO SHOW WHEN ANY SHIP IS SUNK!!!
+
+            for(int i = 0; i < player.CoorLogi.shipCoordinates[hitShip].Count; i++)
+            {
+
+                try
+                {
+                    if (player.CoorLogi.shipCoordinates[hitShip].Contains(player.CoorLogi.hitCoordinates[hitShip][i]))
+                    {
+                        //Console.WriteLine("They are equal");
+                        hits++;
+
+                    }
+                    if(hits == player.CoorLogi.shipCoordinates[hitShip].Count)
+                    {
+                        Console.WriteLine("You sunk a {0}", typeOfShip[hitShip]);
+                    }
+                   
+                }
+                catch (Exception e)
+                {
+                    //Console.WriteLine("still missing");
+                }
+
+
+            }
+
+
+
         }
 
 
