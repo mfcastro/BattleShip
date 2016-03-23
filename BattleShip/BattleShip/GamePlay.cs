@@ -212,6 +212,13 @@ namespace BattleShip
 
         }
 
+        public void populateHitList(Player player)
+        {
+            for(int i = 0; i<5; i++)
+            {
+                player.CoorLogi.hitCoordinates.Add(new List<Tuple<int, int>> { });
+            }
+        }
         
        
 
@@ -300,16 +307,30 @@ namespace BattleShip
                 for(int shipSection = 0; shipSection < player.CoorLogi.shipCoordinates[ship].Count; shipSection++)
                 {
                 hit = player.CoorLogi.shipCoordinates[ship].Contains(coord);
+
+                
+                if(hit == true)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
                 }
 
-               
+                if (hit == true)
+                {
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
 
             }
            Console.WriteLine("{0}: {1} ", coord, hit);    // Temporary
-
-
-
-
 
 
             if (hit == true)
@@ -375,6 +396,10 @@ namespace BattleShip
 
         public void turnSwitcher(Player player1, Player player2)
         {
+            populateHitList(player1);
+            populateHitList(player2);
+
+
             while (noWinner)
             {
                 Console.WriteLine("Player 1: {0} to attack {1} " , player1.name, player2.name);
@@ -398,12 +423,12 @@ namespace BattleShip
                     noWinner = false;
                 }
 
-
-
             }
         }
 
 
+
+        
 
 
 
