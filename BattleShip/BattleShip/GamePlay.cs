@@ -282,9 +282,37 @@ namespace BattleShip
 
         public bool didYouHitAShip(Player player, Tuple <int, int> coord)
         {
-           bool hit =  player.CoorLogi.shipCoordinates[0].Contains(coord);
+           //bool hit =  player.CoorLogi.shipCoordinates[0].Contains(coord);
 
-            if(hit == true)
+            bool hit = false;
+
+
+            /*foreach(List<Tuple<int, int>> ship in player.CoorLogi.shipCoordinates)
+            {
+                foreach(Tuple<int, int> shipSection in ship)
+                {
+                     hits = player.CoorLogi.shipCoordinates[ship].Contains(coord);
+                }
+            }*/
+
+            for (int ship = 0; ship < player.CoorLogi.shipCoordinates.Count; ship++)
+            {
+                for(int shipSection = 0; shipSection < player.CoorLogi.shipCoordinates[ship].Count; shipSection++)
+                {
+                hit = player.CoorLogi.shipCoordinates[ship].Contains(coord);
+                }
+
+               
+
+            }
+           Console.WriteLine("{0}: {1} ", coord, hit);    // Temporary
+
+
+
+
+
+
+            if (hit == true)
             {
                 //displayHitShip(player.map);
                 displayHitShip(player.mapThatOpponentSees);
@@ -295,8 +323,8 @@ namespace BattleShip
             {
                 //displayMissedShot(player.map);
                 displayMissedShot(player.mapThatOpponentSees);
+                System.Media.SystemSounds.Beep.Play();
                 Console.WriteLine("You just missed!"); // If already hit tell player it has been hit already and reprompt
-                System.Media.SystemSounds.Question.Play();
                 Console.WriteLine();
 
             }
@@ -374,6 +402,12 @@ namespace BattleShip
 
             }
         }
+
+
+
+
+
+
 
     }
 }
