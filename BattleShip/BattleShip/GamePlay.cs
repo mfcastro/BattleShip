@@ -33,19 +33,20 @@ namespace BattleShip
             Console.WriteLine("WELCOME TO BATTLESHIP!");
             Console.WriteLine();
             Console.WriteLine("Play [p] Instructions [i] Controls [c]");
-            string selection = Console.ReadLine();
-           
+            Console.WriteLine();
+            ConsoleKeyInfo keyPressed = Console.ReadKey(true);
 
-            if (selection.Equals("p"))
+
+            if (keyPressed.KeyChar.Equals('p'))
             {
                 gameMenu(player);
             }
-            else if (selection.Equals("i"))
+            else if (keyPressed.KeyChar.Equals('i'))
             {
                 getGameInstructions();
                 startMenu(player);
             }
-            else if (selection.Equals("c"))
+            else if (keyPressed.KeyChar.Equals('c'))
             {
                 getControlMenu();
                 startMenu(player);
@@ -117,7 +118,7 @@ namespace BattleShip
 
         public void gameMenu(Player player)
         {
-            Console.WriteLine();
+            //Console.WriteLine();
             Console.WriteLine("{0}: What is your name: ", player.name);
             player.name = Console.ReadLine();
 

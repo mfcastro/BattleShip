@@ -55,40 +55,43 @@ namespace BattleShip
             ship.vertical = false;
             ship.horizontal = true;
 
+           
+
             while (moveShip)
             {
+                Console.WriteLine("Player {0}: {1} - Where do you want to move your {2}?", this.playerNumber, this.name, ship.shipName);
                 try
                 {
-                    Console.WriteLine("Player {0}: {1} - Where do you want to move your {2}?",this.playerNumber, this.name ,ship.shipName);
-                   string control = Console.ReadLine();
-
-                    if (control.Equals("x"))
+                    ConsoleKeyInfo keyPressed = Console.ReadKey(true);
+                    if (keyPressed.KeyChar.Equals('x'))
                     {
                         moveShip = false;
                     }
-                    else if (control.Equals("q"))
+                    else if (keyPressed.KeyChar.Equals('q'))
                     {
                         moveShip = setHere;
+                        Console.WriteLine();
+                        map.drawMap();
                         CoorLogi.saveShipCoordinate(map, ship);
 
                     }
-                    else if (control.Equals("w"))
+                    else if (keyPressed.KeyChar.Equals('w'))
                     {
                         ship.moveShipUp(map, ship);
                     }
-                    else if (control.Equals("s"))
+                    else if (keyPressed.KeyChar.Equals('s'))
                     {
                         ship.moveShipDown(map, ship);
                     }
-                    else if (control.Equals("d"))
+                    else if (keyPressed.KeyChar.Equals('d'))
                     {
                         ship.moveShipRight(map, ship);
                     }
-                    else if (control.Equals("a"))
+                    else if (keyPressed.KeyChar.Equals('a'))
                     {
                         ship.moveShipLeft(map, ship);
                     }
-                    else if (control.Equals("r"))
+                    else if (keyPressed.KeyChar.Equals('r'))
                     {
                         ship.rotateShip(map, ship);
                     }

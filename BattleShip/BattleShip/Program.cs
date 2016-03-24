@@ -12,9 +12,11 @@ namespace BattleShip
         {
             GamePlay gamePlay = new GamePlay();
             gamePlay.startGame();
+            
+            Console.ReadLine();
 
             Console.WriteLine();
-            Console.ReadLine();
+            
         }
     }
 }
