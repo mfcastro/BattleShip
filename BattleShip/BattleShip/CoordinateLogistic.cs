@@ -22,18 +22,16 @@ namespace BattleShip
 
 
         public void saveShipCoordinate(Map map, Ship ship)
-            {
-          //  for(int i = 0; i < 5; i++)
-            //{
-                shipCoordinates.Add(new List<Tuple<int, int>> { });
-            //}
-
+        {
+          shipCoordinates.Add(new List<Tuple<int, int>> { });
+          
 
             if (ship.horizontal == true)
             {
                 for (int shipSection = 0; shipSection < ship.sizeOfShip; shipSection++)
                 {
                     addCoordinatesToList(ship, shipSection);
+
                 }
             }
             else if (ship.vertical == true)
@@ -41,57 +39,32 @@ namespace BattleShip
                 for (int shipSection = 0; shipSection < ship.sizeOfShip; shipSection++)
                 {
                     addCoordinatesToList(ship, shipSection);
+
                 }
             }
         }
 
         public void addCoordinatesToList(Ship ship, int shipSection)
         {
-            //shipCoordinates.Add(new List<Tuple<int, int>> { });
-
             int shipNumber = nameOfShip[ship.shipName];
 
-            //Console.WriteLine("Ship name : {0} ship number: {1}", ship.shipName, shipNumber); // temporary
-            //Console.WriteLine("****************************************************************");
-            
 
             if(ship.horizontal == true)
             {
                  Tuple<int, int> coordinates = new Tuple<int, int>(ship.yCoordinate, ship.xCoordinate + shipSection);
-                shipCoordinates[shipNumber].Add(coordinates); // will need to change index to shipNumber. For now leave it.
+                shipCoordinates[shipNumber].Add(coordinates); 
 
-                //will have to figure out how to access all the components
             }
             else if(ship.vertical == true)
             {
                 Tuple<int, int> coordinates = new Tuple<int, int>(ship.yCoordinate + shipSection, ship.xCoordinate);
                 shipCoordinates[shipNumber].Add(coordinates);
-            }
-           
 
+            }
         }
 
-        /*public void trackWhichShipYouHit(Player player, Ship ship)
-        {
-            int shipNumber = nameOfShip[ship.shipName];
 
-
-            if (ship.horizontal == true)
-            {
-                var coordinates = new Tuple<int, int>(ship.yCoordinate, ship.xCoordinate + shipSection);
-                hitCoordinates[0].Add(coordinates); // will need to change index to shipNumber. For now leave it.
-
-                //will have to figure out how to access all the components
-            }
-            else if (ship.vertical == true)
-            {
-                var coordinates = new Tuple<int, int>(ship.yCoordinate + shipSection, ship.xCoordinate);
-                shipCoordinates[0].Add(coordinates);
-            }
-        }*/
-
-
-
+        
         public void printShipCoordinates()
         {
             for(int i = 0; i < shipCoordinates.Count; i++)
@@ -100,7 +73,6 @@ namespace BattleShip
                 {
 
                         Console.WriteLine(shipCoordinates[i][j]);
-                        
                 }
             }
         }
@@ -110,7 +82,6 @@ namespace BattleShip
         {
            
             int hits = 0;
-            //WILL ONLY SHOW WHEN AIRCRAFT CARRIER IS SUNK!!! NEED TO SHOW WHEN ANY SHIP IS SUNK!!!
 
             for(int i = 0; i < player.CoorLogi.shipCoordinates[hitShip].Count; i++)
             {
@@ -119,9 +90,7 @@ namespace BattleShip
                 {
                     if (player.CoorLogi.shipCoordinates[hitShip].Contains(player.CoorLogi.hitCoordinates[hitShip][i]))
                     {
-                        //Console.WriteLine("They are equal");
                         hits++;
-
                     }
                     if(hits == player.CoorLogi.shipCoordinates[hitShip].Count)
                     {
@@ -134,16 +103,9 @@ namespace BattleShip
                 }
                 catch (Exception e)
                 {
-                    //Console.WriteLine("still missing");
+
                 }
-
-
             }
-
-
-
         }
-
-
     }
 }

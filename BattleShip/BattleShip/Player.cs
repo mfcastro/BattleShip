@@ -14,9 +14,8 @@ namespace BattleShip
         public int playerNumber;
 
         public Map map = new Map();
-        public CoordinateLogistic CoorLogi = new CoordinateLogistic();
-
         public Map mapThatOpponentSees = new Map();
+        public CoordinateLogistic CoorLogi = new CoordinateLogistic();
 
         public int hits = 0;
         public int misses = 0;
@@ -32,8 +31,8 @@ namespace BattleShip
         public Player(string name, int playerNumber){
             this.name = name;
             this.playerNumber++;
-            Map map = new Map();
-            Map mapThatOpponentSees = new Map();
+            //Map map = new Map();
+            //Map mapThatOpponentSees = new Map();
             this.playerNumber = playerNumber;
             getSunkShipArray();
     }
@@ -46,10 +45,6 @@ namespace BattleShip
             this.sunkShips[3] = this.destroyerSunk;
             this.sunkShips[4] = this.patrolBoatSunk;
         }
-
-
-
-
 
 
         public void moveShipOnMap(Map map, Ship ship)
@@ -76,7 +71,6 @@ namespace BattleShip
                     {
                         moveShip = setHere;
                         CoorLogi.saveShipCoordinate(map, ship);
-                    
 
                     }
                     else if (control.Equals("w"))
@@ -98,7 +92,6 @@ namespace BattleShip
                     else if (control.Equals("r"))
                     {
                         ship.rotateShip(map, ship);
-                    
                     }
                     else
                     {
@@ -110,10 +103,8 @@ namespace BattleShip
                 {
                     Console.WriteLine("You moved your ship off the map. Please move it back. ");
                     map.drawMap();
-                    //moveShipOnMap(map, ship);
 
                 }
-
             }
             moveShip = true;
             setHere = false;

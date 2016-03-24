@@ -8,9 +8,6 @@ namespace BattleShip
 {
     public class Map
     {
-
-        
-
         public List<List<string>> map = new List<List<string>>();
 
         string[] alphabet = {" ","  ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" , "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC" };
@@ -28,7 +25,6 @@ namespace BattleShip
                 }
                 Console.WriteLine();
             }
-
         }
 
         public void fillMap(int length, int width)

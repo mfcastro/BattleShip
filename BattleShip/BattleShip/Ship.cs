@@ -15,8 +15,8 @@ namespace BattleShip
         public List<string> shipCoordinates = new List<string>();
 
 
-        public int yCoordinate = 1; //column
-        public int xCoordinate = 2; //row
+        public int yCoordinate = 1; 
+        public int xCoordinate = 2;
         public bool horizontal = true;
         public bool vertical = false;
         public bool atTop = false;
@@ -26,19 +26,8 @@ namespace BattleShip
         public bool pieceIsThere = false;
 
 
-      /*  public void AddShipToMap(Map map, Ship ship)
-        {   
-            for(int i = 0; i<this.sizeOfShip; i++)
-            {
-                map.map[1][2 + i] = ship.gamePiece;
-            }
-            map.drawMap();
-        }*/
-
-
         public void moveShipDown(Map map, Ship ship)
         {
-
             if (checkIfAtBottomOfMap())
             {
                 Console.WriteLine("Can't Move down any more");
@@ -56,12 +45,10 @@ namespace BattleShip
 
                     this.yCoordinate += 1;
 
-
                 }
                 else if (vertical == true)
                 {
-                    //move down if vertical - Works!!!! Check for edges
-
+                   
                     for (int i = 0; i < this.sizeOfShip; i++)
                     {
                         map.map[this.yCoordinate + i + 1][this.xCoordinate] = ship.gamePiece;
@@ -81,10 +68,6 @@ namespace BattleShip
             atRight = false;
             atTop = false;
             atBottom = false;
-
-
-              
-
         }
 
         public void moveShipUp(Map map, Ship ship)
@@ -109,9 +92,6 @@ namespace BattleShip
                 }
                 else if (vertical == true)
                 {
-                    //move up if vertical  - WORKS JUST NEED TO CHECK FOR EDGES!!!!!
-
-
                     for (int i = 0; i < this.sizeOfShip; i++)
                     {
                         map.map[this.yCoordinate + i - 1][this.xCoordinate] = ship.gamePiece;
@@ -131,9 +111,6 @@ namespace BattleShip
             atTop = false;
             atBottom = false;
         }
-
-
-
 
 
         public void moveShipRight(Map map, Ship ship)
@@ -159,7 +136,6 @@ namespace BattleShip
                 }
                 else if (vertical == true)
                 {
-                    //move right if vertical -  WORKS!!! JUST NEED TO CHECK EDGES OF MAP
                     for (int i = 0; i < this.sizeOfShip; i++)
                     {
                         map.map[this.yCoordinate + i][this.xCoordinate] = "?";
@@ -183,8 +159,6 @@ namespace BattleShip
 
         public void moveShipLeft(Map map, Ship ship)
         {
-
-
             if (checkIfAtLeftOfMap())
             {
                 Console.WriteLine();
@@ -207,7 +181,6 @@ namespace BattleShip
                 }
                 else if (vertical == true)
                 {
-                    //move left if horizontal - WORKS JUST NEED TO CHECK IF AT LEFT OF MAP
                     for (int i = 0; i < this.sizeOfShip; i++)
                     {
                         map.map[this.yCoordinate + i][this.xCoordinate] = "?";
@@ -216,8 +189,6 @@ namespace BattleShip
 
                     this.xCoordinate -= 1;
                 }
-
-
                 Console.WriteLine();
                 map.drawMap();
             }
@@ -227,6 +198,7 @@ namespace BattleShip
             atTop = false;
             atBottom = false;
         }
+
 
         public void rotateShip(Map map, Ship ship)
         {
@@ -250,14 +222,12 @@ namespace BattleShip
                     map.map[this.yCoordinate][this.yCoordinate + i+1] = "?";
                     map.map[this.yCoordinate + j][this.xCoordinate] = ship.gamePiece;
                 }
-                
             }
 
             vertical = true;
             horizontal = false;
-
-            atRight = false;// TESTING
-            atLeft = false;// TESTING 
+            atRight = false;
+            atLeft = false;
 
 
             Console.WriteLine();
@@ -278,10 +248,8 @@ namespace BattleShip
 
             vertical = false;
             horizontal = true;
-
-
-            atRight = false;// TESTING
-            atLeft = false;// TESTING 
+            atRight = false;
+            atLeft = false;
 
             Console.WriteLine();
             map.drawMap();
@@ -333,10 +301,6 @@ namespace BattleShip
                     atBottom = false;
                     atTop = false;
                 }
-               // else
-                //{
-                  //  atRight = false;
-                //}
             }
             else if (vertical == true)
             {
@@ -347,10 +311,6 @@ namespace BattleShip
                     atBottom = false;
                     atTop = false;
                 }
-                //else
-                //{
-                  //  atRight = false;
-                //}
             }
             else
             {
@@ -390,24 +350,8 @@ namespace BattleShip
                 atBottom = false;
             }
 
-
-
-
-            /*if (this.yCoordinate == 10) // will need to change it map is dynamic 
-            {
-                atBottom = true;
-            }
-            else
-            {
-                atBottom = false;
-            }*/
-
             return atBottom;
+
         }
-
-
-
-
-
     }
 }
