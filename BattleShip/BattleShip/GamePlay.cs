@@ -171,6 +171,7 @@ namespace BattleShip
         {
             player.mapThatOpponentSees.drawMap();
 
+            Console.ResetColor();
             Console.WriteLine("Hits: {0}, Misses: {1} Ship Sunk: {2}", player.hits, player.misses, player.numberOfShipsSunk); // figure out how to display # of ships sunk 
             Console.WriteLine("To Attack Enter Coordinates [ex. a1]: ");
             string coordinates = Console.ReadLine();
@@ -266,6 +267,8 @@ namespace BattleShip
             if (hit == true)
             {
                 displayHitShip(player.mapThatOpponentSees);
+                //Console.ResetColor();
+
                 showHitShipOnOwnMap(player.map);
                 Console.WriteLine("\aYou just HIT a ship!!");
                 player.hits++;
@@ -358,11 +361,13 @@ namespace BattleShip
 
             while (noWinner)
             {
+                Console.ResetColor();
                 Console.WriteLine("Player 1: {0} to attack {1} " , player1.name, player2.name);
 
                 Console.WriteLine(); //added
                 Console.WriteLine("Your map:"); //added
                 player1.map.drawMap();// added
+                Console.ResetColor();
                 Console.WriteLine("------------------------"); //added
                 Console.WriteLine("Player 2 Map:"); // added
                 attackPlayer(player2);
@@ -379,11 +384,13 @@ namespace BattleShip
                 }
                 else
                 {
+                    Console.ResetColor();
                     Console.WriteLine("Player 2: {0} to attack {1} ", player2.name, player1.name);
 
                     Console.WriteLine(); //added
                     Console.WriteLine("Your map:"); //added
                     player2.map.drawMap();// added
+                    Console.ResetColor();
                     Console.WriteLine("------------------------"); //added
                     Console.WriteLine("Player 1 Map:"); // added
 

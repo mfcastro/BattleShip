@@ -16,16 +16,32 @@ namespace BattleShip
 
         public void drawMap()
         {
-                       
-            for(int i = 0; i<map.Count; i++)
+            int hitTimes = 1;
+            bool hit = false;
+
+            for (int i = 0; i < map.Count; i++)
             {
-                for(int j = 0;j < map[i].Count; j++)
+                for (int j = 0; j < map[i].Count; j++)
                 {
-                    Console.Write(map[i][j] + " ");
+                    if (map[i][j] == "*")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(map[i][j] + " ");
+                    }
+                    else if (map[i][j] == "X")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(map[i][j] + " ");
+                    }
+                    else
+                    {
+                        Console.ResetColor();
+                        Console.Write(map[i][j] + " ");
+                    }
                 }
                 Console.WriteLine();
             }
-        }
+      }
 
         public void fillMap(int length, int width)
         {
