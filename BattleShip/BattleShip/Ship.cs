@@ -12,7 +12,7 @@ namespace BattleShip
         public string shipName = "Ship";
         public string gamePiece;
 
-        public List<string> shipCoordinates = new List<string>();
+        //public List<string> shipCoordinates = new List<string>();
 
         public int yCoordinate = 1; 
         public int xCoordinate = 2;
@@ -352,5 +352,12 @@ namespace BattleShip
             return atBottom;
 
         }
+
+
+        public void checkIfShipsWillOverlap()
+        {
+          
+        }
+
     }
 }

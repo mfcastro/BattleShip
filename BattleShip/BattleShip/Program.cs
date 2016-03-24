@@ -10,7 +10,6 @@ namespace BattleShip
     {
         static void Main(string[] args)
         {
-            
             GamePlay gamePlay = new GamePlay();
             gamePlay.startGame();
 

@@ -265,6 +265,7 @@ namespace BattleShip
             if (hit == true)
             {
                 displayHitShip(player.mapThatOpponentSees);
+                showHitShipOnOwnMap(player.map);
                 Console.WriteLine("\aYou just HIT a ship!!");
                 player.hits++;
 
@@ -278,6 +279,7 @@ namespace BattleShip
             else
             {
                 displayMissedShot(player.mapThatOpponentSees);
+                showMissedShotOnMap(player.map);
                 System.Media.SystemSounds.Beep.Play();
                 Console.WriteLine("You just missed!"); // If already hit tell player it has been hit already and reprompt
                 player.misses++;
@@ -297,11 +299,25 @@ namespace BattleShip
                 map.drawMap();
 
 
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("Out of range");
             }
-            
+        }  
+
+
+        public void showHitShipOnOwnMap(Map map)
+        {
+            try
+            {
+                map.map[this.xcoord][this.ycoord] = "*";
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Out of range");
+            }
         }
 
 
@@ -311,6 +327,19 @@ namespace BattleShip
             {
                 map.map[this.xcoord][this.ycoord] = "X";
                 map.drawMap();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Out of range");
+            }
+        }
+
+        public void showMissedShotOnMap(Map map)
+        {
+            try
+            {
+                map.map[this.xcoord][this.ycoord] = "X";
 
             }
             catch (Exception e)
@@ -329,7 +358,14 @@ namespace BattleShip
             while (noWinner)
             {
                 Console.WriteLine("Player 1: {0} to attack {1} " , player1.name, player2.name);
+
+                Console.WriteLine(); //added
+                Console.WriteLine("Your map:"); //added
+                player1.map.drawMap();// added
+                Console.WriteLine("------------------------"); //added
+                Console.WriteLine("Player 2 Map:"); // added
                 attackPlayer(player2);
+
                 Console.WriteLine();
 
 
@@ -343,6 +379,13 @@ namespace BattleShip
                 else
                 {
                     Console.WriteLine("Player 2: {0} to attack {1} ", player2.name, player1.name);
+
+                    Console.WriteLine(); //added
+                    Console.WriteLine("Your map:"); //added
+                    player2.map.drawMap();// added
+                    Console.WriteLine("------------------------"); //added
+                    Console.WriteLine("Player 1 Map:"); // added
+
                     attackPlayer(player1);
 
 

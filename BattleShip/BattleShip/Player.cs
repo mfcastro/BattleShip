@@ -28,11 +28,10 @@ namespace BattleShip
         public bool patrolBoatSunk = false;
         public bool[] sunkShips = new bool [5];
 
+
         public Player(string name, int playerNumber){
             this.name = name;
             this.playerNumber++;
-            //Map map = new Map();
-            //Map mapThatOpponentSees = new Map();
             this.playerNumber = playerNumber;
             getSunkShipArray();
     }
@@ -61,7 +60,7 @@ namespace BattleShip
                 try
                 {
                     Console.WriteLine("Player {0}: {1} - Where do you want to move your {2}?",this.playerNumber, this.name ,ship.shipName);
-                    string control = Console.ReadLine();
+                   string control = Console.ReadLine();
 
                     if (control.Equals("x"))
                     {
