@@ -94,10 +94,12 @@ namespace BattleShip
                     }
                     if(hits == player.CoorLogi.shipCoordinates[hitShip].Count)
                     {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("You sunk a {0}", typeOfShip[hitShip]);
                         player.numberOfShipsSunk++;
                         player.sunkShips[hitShip] = true;
 
+                        
                     }
                    
                 }

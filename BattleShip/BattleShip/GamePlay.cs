@@ -12,7 +12,8 @@ namespace BattleShip
        public int xcoord = 0;
        public int ycoord = 0;
        bool noWinner = true;
-       string[] controlMenu = {"[w] move ship up" , "[s] move ship down" , "[d] move ship right" , "[a] move ship right" , 
+
+        string[] controlMenu = {"[w] move ship up" , "[s] move ship down" , "[d] move ship right" , "[a] move ship right" , 
                               "[r] rotate ship vertical or horizontal", "[q] place ship" , "[m] game menu"}; 
 
  
@@ -27,6 +28,9 @@ namespace BattleShip
             //getNewMapSize(player1, player2); // may be temporary
 
             gameMenu(player2);
+
+            Console.WriteLine("Ships are set! Press Enter to Start Game!");
+            Console.ReadLine();
 
             turnSwitcher(player1, player2);
         }
@@ -60,7 +64,7 @@ namespace BattleShip
             }
         }
 
-        private void getControlMenu()
+        public void getControlMenu()
         {
             Console.WriteLine("Available Game Controls: ");
             Console.WriteLine();
@@ -140,6 +144,7 @@ namespace BattleShip
 
             }
 
+            Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine("---------------------------------------------------------------------------------------------------------");
             Console.WriteLine();
@@ -177,7 +182,7 @@ namespace BattleShip
             player.mapThatOpponentSees.drawMap();
 
             Console.ResetColor();
-            Console.WriteLine("Hits: {0}, Misses: {1} Ship Sunk: {2}", player.hits, player.misses, player.numberOfShipsSunk); // figure out how to display # of ships sunk 
+            Console.WriteLine("Hits: {0}, Misses: {1}, Ship Sunk: {2}", player.hits, player.misses, player.numberOfShipsSunk); // figure out how to display # of ships sunk 
             Console.WriteLine("To Attack Enter Coordinates [ex. a1]: ");
             string coordinates = Console.ReadLine();
 
@@ -272,15 +277,21 @@ namespace BattleShip
             if (hit == true)
             {
                 displayHitShip(player.mapThatOpponentSees);
-                //Console.ResetColor();
+                Console.ResetColor();
 
                 showHitShipOnOwnMap(player.map);
-                Console.WriteLine("\aYou just HIT a ship!!");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("\aYou just HIT a ship!! Press <Enter> to continue.");
                 player.hits++;
 
                 player.CoorLogi.hitCoordinates[shipHit].Add(coord);
                 
                 player.CoorLogi.checkToSeeIfShipWasSunk(player, shipHit);
+
+
+                Console.ReadLine();
+
+                Console.ResetColor();
 
                 Console.WriteLine();
 
@@ -288,10 +299,18 @@ namespace BattleShip
             else
             {
                 displayMissedShot(player.mapThatOpponentSees);
+                Console.ResetColor();
+
                 showMissedShotOnMap(player.map);
                 System.Media.SystemSounds.Beep.Play();
-                Console.WriteLine("You just missed!"); // If already hit tell player it has been hit already and reprompt
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("You just missed! Press <Enter> to continue"); // If already hit tell player it has been hit already and reprompt
                 player.misses++;
+
+                Console.ReadLine();
+
+                Console.ResetColor();
+
                 Console.WriteLine();
 
             }

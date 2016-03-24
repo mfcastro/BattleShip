@@ -16,6 +16,7 @@ namespace BattleShip
         public Map map = new Map();
         public Map mapThatOpponentSees = new Map();
         public CoordinateLogistic CoorLogi = new CoordinateLogistic();
+        public GamePlay controls = new GamePlay();
 
         public int hits = 0;
         public int misses = 0;
@@ -59,7 +60,8 @@ namespace BattleShip
 
             while (moveShip)
             {
-                Console.WriteLine("Player {0}: {1} - Where do you want to move your {2}?", this.playerNumber, this.name, ship.shipName);
+                Console.ResetColor();
+                Console.WriteLine("Player {0}: {1} - Where do you want to move your {2}?  [m] control menu", this.playerNumber, this.name, ship.shipName);
                 try
                 {
                     ConsoleKeyInfo keyPressed = Console.ReadKey(true);
@@ -69,6 +71,7 @@ namespace BattleShip
                     }
                     else if (keyPressed.KeyChar.Equals('q'))
                     {
+                       
                         moveShip = setHere;
                         Console.WriteLine();
                         map.drawMap();
@@ -94,6 +97,11 @@ namespace BattleShip
                     else if (keyPressed.KeyChar.Equals('r'))
                     {
                         ship.rotateShip(map, ship);
+                    }
+                    else if (keyPressed.KeyChar.Equals('m'))
+                    {
+                        Console.WriteLine();
+                        controls.getControlMenu();
                     }
                     else
                     {
