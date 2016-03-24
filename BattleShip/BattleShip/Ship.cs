@@ -14,7 +14,6 @@ namespace BattleShip
 
         public List<string> shipCoordinates = new List<string>();
 
-
         public int yCoordinate = 1; 
         public int xCoordinate = 2;
         public bool horizontal = true;

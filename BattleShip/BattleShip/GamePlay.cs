@@ -16,6 +16,18 @@ namespace BattleShip
                               "[r] rotate ship vertical or horizontal", "[q] place ship" , "[m] game menu"}; 
 
  
+        public void startGame()
+        {
+            Player player1 = new Player("Player 1", 1);
+            Player player2 = new Player("Player 2", 2);
+
+            startMenu(player1);
+
+            gameMenu(player2);
+
+            turnSwitcher(player1, player2);
+        }
+
         public void startMenu(Player player)
         {
             Console.WriteLine("WELCOME TO BATTLESHIP!");
@@ -323,7 +335,8 @@ namespace BattleShip
 
                 if (checkForWinner(player2))
                 {
-                    Console.WriteLine("Player 1 : {0} Wins!!!", player1.name);
+                    Console.WriteLine("Player 1 Wins : {0} you sunk all of {1}'s ships. You Won!!!", player1.name, player2.name);
+
                     noWinner = false;
                     
                 }
@@ -335,7 +348,7 @@ namespace BattleShip
 
                     if (checkForWinner(player1))
                     {
-                        Console.WriteLine("Player 2 : {0} Wins!!!", player2.name);
+                        Console.WriteLine("Player 2 Wins : {0} you sunk all of {1}'s ships. You Won!!!", player2.name, player1.name);
                         noWinner = false;
                     }
                 }
