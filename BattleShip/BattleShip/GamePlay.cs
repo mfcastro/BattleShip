@@ -18,10 +18,13 @@ namespace BattleShip
  
         public void startGame()
         {
+            Console.ResetColor();
             Player player1 = new Player("Player 1", 1);
             Player player2 = new Player("Player 2", 2);
 
             startMenu(player1);
+
+            //getNewMapSize(player1, player2); // may be temporary
 
             gameMenu(player2);
 
@@ -51,6 +54,7 @@ namespace BattleShip
                 getControlMenu();
                 startMenu(player);
             }
+            
             else{
                 Console.WriteLine("Invalid Entry");
             }
@@ -126,6 +130,7 @@ namespace BattleShip
             Console.WriteLine("Hello {0}! Arrange your Ships on your grid below.", player.name);
             Console.WriteLine();
 
+            
             prepareStartMap(player);
             prepareOpponetViewMenu(player);
 
@@ -144,7 +149,7 @@ namespace BattleShip
 
         private void prepareOpponetViewMenu(Player player)
         {
-            player.mapThatOpponentSees.fillMap(11, 11);
+            player.mapThatOpponentSees.fillMap(player.map.mapLength, player.map.mapWidth);
         }
 
         public void resetShipPlacement(Ship ship, Player player)
@@ -156,13 +161,13 @@ namespace BattleShip
 
         public void prepareStartMap(Player player)
         {
-            player.map.fillMap(11,11);
+            player.map.fillMap(player.map.mapLength,player.map.mapWidth);
             player.map.drawMap();
         }
 
         public void getAttackMap(Player player)
         {
-            player.map.fillMap(11, 11);
+            player.map.fillMap(player.map.mapLength, player.map.mapWidth);
             player.map.drawMap();
         }
 
@@ -366,7 +371,8 @@ namespace BattleShip
 
                 Console.WriteLine(); //added
                 Console.WriteLine("Your map:"); //added
-                player1.map.drawMap();// added
+                //player1.map.drawMap();// added
+                player1.map.drawOwnMap();
                 Console.ResetColor();
                 Console.WriteLine("------------------------"); //added
                 Console.WriteLine("Player 2 Map:"); // added
@@ -389,7 +395,8 @@ namespace BattleShip
 
                     Console.WriteLine(); //added
                     Console.WriteLine("Your map:"); //added
-                    player2.map.drawMap();// added
+                    //player2.map.drawMap();// added
+                    player2.map.drawOwnMap();
                     Console.ResetColor();
                     Console.WriteLine("------------------------"); //added
                     Console.WriteLine("Player 1 Map:"); // added
@@ -429,5 +436,8 @@ namespace BattleShip
             return isWinner;
             
         }
+
+
+        
     }
 }

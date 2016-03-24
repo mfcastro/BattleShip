@@ -12,8 +12,6 @@ namespace BattleShip
         public string shipName = "Ship";
         public string gamePiece;
 
-        //public List<string> shipCoordinates = new List<string>();
-
         public int yCoordinate = 1; 
         public int xCoordinate = 2;
         public bool horizontal = true;
@@ -27,7 +25,7 @@ namespace BattleShip
 
         public void moveShipDown(Map map, Ship ship)
         {
-            if (checkIfAtBottomOfMap())
+            if (checkIfAtBottomOfMap(map))
             {
                 Console.WriteLine("Can't Move down any more");
             }
@@ -71,7 +69,7 @@ namespace BattleShip
 
         public void moveShipUp(Map map, Ship ship)
         {
-            if (checkIfAtTopOfMap())
+            if (checkIfAtTopOfMap(map))
             {
                 Console.WriteLine("Can't Move up any more");
             }
@@ -115,7 +113,7 @@ namespace BattleShip
         public void moveShipRight(Map map, Ship ship)
         {
 
-           if (checkIfAtRightOfMap())
+           if (checkIfAtRightOfMap(map))
             {
                 Console.WriteLine();
                 Console.WriteLine("You can't move right anymore");
@@ -158,7 +156,7 @@ namespace BattleShip
 
         public void moveShipLeft(Map map, Ship ship)
         {
-            if (checkIfAtLeftOfMap())
+            if (checkIfAtLeftOfMap(map))
             {
                 Console.WriteLine();
                 Console.WriteLine("You can't move left anymore");
@@ -255,7 +253,7 @@ namespace BattleShip
         }
 
 
-        public bool checkIfAtTopOfMap()
+        public bool checkIfAtTopOfMap(Map map)
         {
             if(this.yCoordinate == 1)
             {
@@ -272,7 +270,7 @@ namespace BattleShip
             return atTop;
         }
 
-        public bool checkIfAtLeftOfMap()
+        public bool checkIfAtLeftOfMap(Map map)
         {
             if (this.xCoordinate == 2)
             {
@@ -289,11 +287,11 @@ namespace BattleShip
             return atLeft;
         }
 
-        public bool checkIfAtRightOfMap()
+        public bool checkIfAtRightOfMap(Map map)
         {
             if(horizontal == true)
             {
-                if (this.xCoordinate == 11 - sizeOfShip) // this will have to change if you make the map dynamic 
+                if (this.xCoordinate == map.mapWidth - sizeOfShip) // this will have to change if you make the map dynamic 
                 {
                     atRight = true;
                     atLeft = false;
@@ -303,7 +301,7 @@ namespace BattleShip
             }
             else if (vertical == true)
             {
-                if (this.xCoordinate == 10) // this will have to change if you make the map dynamic 
+                if (this.xCoordinate == map.mapWidth -1) // this will have to change if you make the map dynamic 
                 {
                     atRight = true;
                     atLeft = false;
@@ -322,11 +320,11 @@ namespace BattleShip
         }
 
 
-        public bool checkIfAtBottomOfMap()
+        public bool checkIfAtBottomOfMap(Map map)
         {
             if(horizontal == true)
             {
-                if (this.yCoordinate == 10) // will need to change it map is dynamic 
+                if (this.yCoordinate == map.mapLength -1) // will need to change it map is dynamic 
                 {
                     atBottom = true;
                     atTop = false;
@@ -336,7 +334,7 @@ namespace BattleShip
             }
             else if(vertical == true)
             {
-                if (this.yCoordinate == 11 - sizeOfShip) // will need to change it map is dynamic 
+                if (this.yCoordinate == map.mapLength - sizeOfShip) // will need to change it map is dynamic 
                 {
                     atBottom = true;
                     atTop = false;
