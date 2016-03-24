@@ -57,14 +57,14 @@ namespace BattleShip
 
             if(ship.horizontal == true)
             {
-                 var coordinates = new Tuple<int, int>(ship.yCoordinate, ship.xCoordinate + shipSection);
+                 Tuple<int, int> coordinates = new Tuple<int, int>(ship.yCoordinate, ship.xCoordinate + shipSection);
                 shipCoordinates[shipNumber].Add(coordinates); // will need to change index to shipNumber. For now leave it.
 
                 //will have to figure out how to access all the components
             }
             else if(ship.vertical == true)
             {
-                 var coordinates = new Tuple<int, int>(ship.yCoordinate + shipSection, ship.xCoordinate);
+                Tuple<int, int> coordinates = new Tuple<int, int>(ship.yCoordinate + shipSection, ship.xCoordinate);
                 shipCoordinates[shipNumber].Add(coordinates);
             }
            
@@ -126,6 +126,9 @@ namespace BattleShip
                     if(hits == player.CoorLogi.shipCoordinates[hitShip].Count)
                     {
                         Console.WriteLine("You sunk a {0}", typeOfShip[hitShip]);
+                        player.numberOfShipsSunk++;
+                        player.sunkShips[hitShip] = true;
+
                     }
                    
                 }

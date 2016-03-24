@@ -55,7 +55,7 @@ namespace BattleShip
                 Console.WriteLine("Invalid Entry");
             }
 
-
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------");
         }
 
         private void getControlMenu()
@@ -202,6 +202,7 @@ namespace BattleShip
         {
             player.mapThatOpponentSees.drawMap();
 
+            Console.WriteLine("Hits: {0}, Misses: {1} Ship Sunk: {2}", player.hits, player.misses, player.numberOfShipsSunk); // figure out how to display # of ships sunk 
             Console.WriteLine("To Attack Enter Coordinates [ex. a1]: ");
             string coordinates = Console.ReadLine();
 
@@ -342,15 +343,17 @@ namespace BattleShip
                 //displayHitShip(player.map);
                 displayHitShip(player.mapThatOpponentSees);
                 Console.WriteLine("\aYou just HIT a ship!!"); //Need to remove coordinates from list of coordinates?? 
-                player.CoorLogi.hitCoordinates[shipHit].Add(coord);
+                player.hits++;
 
+                player.CoorLogi.hitCoordinates[shipHit].Add(coord);
+                
 
                 player.CoorLogi.checkToSeeIfShipWasSunk(player, shipHit);
 
 
                 //____________________________________________________________________________________________________________
-                Console.WriteLine("Player {0}: {1}",player.playerNumber,player.name);
-                Console.WriteLine("Added to list: {0}", player.CoorLogi.hitCoordinates[shipHit][0]); //Test
+               // Console.WriteLine("Player {0}: {1}",player.playerNumber,player.name);
+                //Console.WriteLine("Added to list: {0}", player.CoorLogi.hitCoordinates[shipHit][0]); //Test
 
                /* for (int ship = 0; ship < player.CoorLogi.hitCoordinates.Count; ship++)
                 {
@@ -387,6 +390,7 @@ namespace BattleShip
                 displayMissedShot(player.mapThatOpponentSees);
                 System.Media.SystemSounds.Beep.Play();
                 Console.WriteLine("You just missed!"); // If already hit tell player it has been hit already and reprompt
+                player.misses++;
                 Console.WriteLine();
 
             }
@@ -446,26 +450,72 @@ namespace BattleShip
             {
                 Console.WriteLine("Player 1: {0} to attack {1} " , player1.name, player2.name);
                 attackPlayer(player2);
-
-
                 Console.WriteLine();
 
-                Console.WriteLine("Player 2: {0} to attack {1} ", player2.name, player1.name);
-                attackPlayer(player1);
+
+                if (checkForWinner(player2))
+                {
+                    Console.WriteLine("Player 1 : {0} Wins!!!", player1.name);
+                    noWinner = false;
+                    
+                }
+                else
+                {
+
+                    Console.WriteLine("Player 2: {0} to attack {1} ", player2.name, player1.name);
+                    attackPlayer(player1);
 
 
-                if(player1.CoorLogi.shipCoordinates.Count == 0)
+
+                    if (checkForWinner(player1))
+                    {
+                        Console.WriteLine("Player 2 : {0} Wins!!!", player2.name);
+                        noWinner = false;
+                    }
+                }
+
+                
+
+                /*if (checkForWinner(player1))
                 {
                     Console.WriteLine("Player 2 : {0} Wins!!!", player2.name);
                     noWinner = false;
                 }
-                else if(player2.CoorLogi.shipCoordinates.Count == 0)
+                else if(checkForWinner(player2))
                 {
                     Console.WriteLine("Player 1 : {0} Wins!!!" , player1.name);
                     noWinner = false;
-                }
+                }*/
 
             }
+        }
+
+        public bool checkForWinner(Player player)
+        {
+            bool isWinner = false;
+            int numberOfShips =0;
+
+            foreach (bool shipSunk in player.sunkShips)
+            {
+                numberOfShips++;
+
+                if (shipSunk == false)
+                {
+                    break;
+                }
+
+                if(numberOfShips == player.sunkShips.Length)
+                {
+                    isWinner = true;
+                }
+
+                
+
+            }
+
+            return isWinner;
+            
+
         }
 
 

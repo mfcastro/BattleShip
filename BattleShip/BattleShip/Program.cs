@@ -25,7 +25,7 @@ namespace BattleShip
 
             gamePlay.startMenu(player1);
 
-            Console.WriteLine("---------------------------------------------------------------------------------------------------------");
+          //  Console.WriteLine("---------------------------------------------------------------------------------------------------------");
 
             gamePlay.gameMenu(player2);
 
@@ -40,12 +40,12 @@ namespace BattleShip
 
 
             Console.WriteLine();
-            Console.WriteLine("Player 1 Map:");
-            player1.map.drawMap();
+            //Console.WriteLine("Player 1 Map:");
+           // player1.map.drawMap();
 
-            Console.WriteLine();
-            Console.WriteLine("Player 2 Map: ");
-            player2.map.drawMap();
+            //Console.WriteLine();
+            //Console.WriteLine("Player 2 Map: ");
+           // player2.map.drawMap();
 
 
 
