@@ -66,7 +66,7 @@ namespace BattleShip
 
 
         
-        public void printShipCoordinates()
+        /*public void printShipCoordinates()
         {
             for(int i = 0; i < shipCoordinates.Count; i++)
             {
@@ -76,7 +76,7 @@ namespace BattleShip
                         Console.WriteLine(shipCoordinates[i][j]);
                 }
             }
-        }
+        }*/
 
 
         public void checkToSeeIfShipWasSunk(Player player, int hitShip)
@@ -102,7 +102,6 @@ namespace BattleShip
                         player.numberOfShipsRemaining--;
                         player.sunkShips[hitShip] = true;
 
-                        
                     }
                    
                 }

@@ -40,7 +40,7 @@ namespace BattleShip
 
                     Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate + 1, this.xCoordinate + coordinate + this.sizeOfShip - 1);
 
-                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    if (map.placedShipsOnMap.Contains(tempCoordinate))
                     {
                         Console.WriteLine("There is a ship there already");
                     }
@@ -60,7 +60,7 @@ namespace BattleShip
                 {
                     Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate +this.sizeOfShip, this.xCoordinate);
 
-                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    if (map.placedShipsOnMap.Contains(tempCoordinate))
                     {
                         Console.WriteLine("There is a ship there already");
                     }
@@ -102,7 +102,7 @@ namespace BattleShip
                 {
                     Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate - 1, this.xCoordinate + coordinate + this.sizeOfShip-1);
 
-                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) 
                     {
                         Console.WriteLine("There is a ship there already");
                     }
@@ -165,7 +165,7 @@ namespace BattleShip
                 {
                     Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate, this.xCoordinate + coordinate+this.sizeOfShip);
 
-                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) 
                     {
                         Console.WriteLine("There is a ship there already");
                     }
@@ -185,7 +185,7 @@ namespace BattleShip
                 {
                     Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate + coordinate, this.xCoordinate +1);
 
-                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    if (map.placedShipsOnMap.Contains(tempCoordinate))
                     {
                         Console.WriteLine("There is a ship there already");
                     }
@@ -296,6 +296,8 @@ namespace BattleShip
             atLeft = false;
             atTop = false;
             atBottom = false;
+            vertical = true;
+            horizontal = false;
 
 
 
@@ -308,9 +310,7 @@ namespace BattleShip
                 }
             }
 
-            vertical = true;
-            horizontal = false;
-
+            
             Console.WriteLine();
             map.drawMap();
         }
@@ -322,6 +322,9 @@ namespace BattleShip
             atLeft = false;
             atTop = false;
             atBottom = false;
+            vertical = false;
+            horizontal = true;
+
 
             for (int i = 0; i < this.sizeOfShip; i++)
             {
@@ -332,9 +335,6 @@ namespace BattleShip
                 }
 
             }
-
-            vertical = false;
-            horizontal = true;
 
             Console.WriteLine();
             map.drawMap();
@@ -438,12 +438,5 @@ namespace BattleShip
             return atBottom;
 
         }
-
-
-        public void checkIfShipsWillOverlap()
-        {
-          
-        }
-
     }
 }

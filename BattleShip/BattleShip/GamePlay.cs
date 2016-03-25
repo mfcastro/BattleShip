@@ -161,11 +161,12 @@ namespace BattleShip
             player.mapThatOpponentSees.fillMap(player.map.mapLength, player.map.mapWidth);
         }
 
-        public void resetShipPlacement(Ship ship, Player player)
+
+        /*public void resetShipPlacement(Ship ship, Player player)
         {
             player.map.map[ship.yCoordinate][ship.xCoordinate + ship.sizeOfShip - 1] = "X";
 
-        }
+        }*/
 
 
         public void prepareStartMap(Player player)
@@ -174,11 +175,11 @@ namespace BattleShip
             player.map.drawMap();
         }
 
-        public void getAttackMap(Player player)
+        /*public void getAttackMap(Player player)
         {
             player.map.fillMap(player.map.mapLength, player.map.mapWidth);
             player.map.drawMap();
-        }
+        }*/
 
 
         public void attackPlayer(Player player)
@@ -294,9 +295,7 @@ namespace BattleShip
 
 
                 Console.ReadLine();
-
                 Console.ResetColor();
-
                 Console.WriteLine();
 
             }
@@ -308,13 +307,11 @@ namespace BattleShip
                 showMissedShotOnMap(player.map);
                 System.Media.SystemSounds.Beep.Play();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("You just missed! Press <Enter> to continue"); // If already hit tell player it has been hit already and reprompt
+                Console.WriteLine("You just missed! Press <Enter> to continue");
                 player.misses++;
 
                 Console.ReadLine();
-
                 Console.ResetColor();
-
                 Console.WriteLine();
 
             }
@@ -392,13 +389,12 @@ namespace BattleShip
                 Console.ResetColor();
                 Console.WriteLine("Player 1: {0} to attack {1} " , player1.name, player2.name);
 
-                Console.WriteLine(); //added
-                Console.WriteLine("Your map:"); //added
-                //player1.map.drawMap();// added
+                Console.WriteLine(); 
+                Console.WriteLine("Your map:"); 
                 player1.map.drawOwnMap();
                 Console.ResetColor();
-                Console.WriteLine("------------------------"); //added
-                Console.WriteLine("Player 2 Map:"); // added
+                Console.WriteLine("------------------------"); 
+                Console.WriteLine("Player 2 Map:"); 
                 attackPlayer(player2);
 
                 Console.WriteLine();
@@ -406,6 +402,7 @@ namespace BattleShip
 
                 if (checkForWinner(player2))
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Player 1 Wins : {0} you sunk all of {1}'s ships. You Won!!!", player1.name, player2.name);
 
                     noWinner = false;
@@ -416,19 +413,19 @@ namespace BattleShip
                     Console.ResetColor();
                     Console.WriteLine("Player 2: {0} to attack {1} ", player2.name, player1.name);
 
-                    Console.WriteLine(); //added
-                    Console.WriteLine("Your map:"); //added
-                    //player2.map.drawMap();// added
+                    Console.WriteLine(); 
+                    Console.WriteLine("Your map:"); 
                     player2.map.drawOwnMap();
                     Console.ResetColor();
-                    Console.WriteLine("------------------------"); //added
-                    Console.WriteLine("Player 1 Map:"); // added
+                    Console.WriteLine("------------------------"); 
+                    Console.WriteLine("Player 1 Map:"); 
 
                     attackPlayer(player1);
 
 
                     if (checkForWinner(player1))
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Player 2 Wins : {0} you sunk all of {1}'s ships. You Won!!!", player2.name, player1.name);
                         noWinner = false;
                     }
@@ -459,8 +456,5 @@ namespace BattleShip
             return isWinner;
             
         }
-
-
-        
     }
 }
