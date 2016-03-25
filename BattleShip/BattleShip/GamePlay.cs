@@ -26,6 +26,8 @@ namespace BattleShip
             startMenu(player1);
 
             //getNewMapSize(player1, player2); // may be temporary
+            Console.WriteLine("Player 1 Ships are set. Press <Enter> for Player 2 to set ships.");
+            Console.ReadLine();
 
             gameMenu(player2);
 
@@ -88,7 +90,7 @@ namespace BattleShip
 
             Console.WriteLine("Before play begins, each player secretly arranges their ships on their primary grid. Each " 
                 + "\nship occupies a number of consecutive spaces on the grid, arranged either horizontally or" 
-                + "\nvertically. The number of squares for each ship is determined by the type of the ship. The "
+                + "\nvertically. The number of squares for each ship is determined by the type of ship. The "
                 +"\nships cannot overlap (i.e., only one ship can occupy any given square in the grid). The" 
                 +"\ntypes and numbers of ships allowed are the same for each player.");
 
@@ -99,14 +101,14 @@ namespace BattleShip
                                +"\nat. The opponent announces whether or not the square is occupied by a ship, and if it is a \"miss\"," 
                                +"\nthe player marks their primary grid with a \"O\"; if a \"hit\" they mark this on their own" 
                                +"\nprimary grid with a \" * \". The attacking player notes the hit or miss on their own \"tracking\""
-                               +"\ngrid with the appropriate mark (* for \"hit\", O for \"miss\"), in order to build up a" 
-                               +"\npicture of the opponent's fleet.");
+                               +"\ngrid with the appropriate mark (* for \"hit\", X for \"miss\"), in order to build up a picture" 
+                               +"\nof the opponent's fleet.");
 
             Console.WriteLine();
 
             Console.WriteLine("When all of the squares of a ship have been hit, the ship is sunk, and the ship's owner announces"
-                              + "\nthis (e.g. \"You sank my battleship!\"). If all of a player's ships have been sunk, the game is over"
-                              + "\nand their opponent wins");
+                              + "\nwhich ship has been sunk (e.g. \"You sank my battleship!\"). If all of a player's ships have been" 
+                              +"\nsunk, the game is over and their opponent wins");
 
             Console.WriteLine();
 
@@ -184,7 +186,7 @@ namespace BattleShip
             player.mapThatOpponentSees.drawMap();
 
             Console.ResetColor();
-            Console.WriteLine("Hits: {0}, Misses: {1}, Ship Sunk: {2}", player.hits, player.misses, player.numberOfShipsSunk); // figure out how to display # of ships sunk 
+            Console.WriteLine("Hits: {0}, Misses: {1}, Ship Sunk: {2}, Ships Remaining: {3}", player.hits, player.misses, player.numberOfShipsSunk, player.numberOfShipsRemaining); // figure out how to display # of ships sunk 
             Console.WriteLine("To Attack Enter Coordinates [ex. a1]: ");
             string coordinates = Console.ReadLine();
 

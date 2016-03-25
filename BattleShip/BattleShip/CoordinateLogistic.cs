@@ -97,7 +97,9 @@ namespace BattleShip
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("You sunk a {0}", typeOfShip[hitShip]);
+                        System.Media.SystemSounds.Beep.Play();
                         player.numberOfShipsSunk++;
+                        player.numberOfShipsRemaining--;
                         player.sunkShips[hitShip] = true;
 
                         

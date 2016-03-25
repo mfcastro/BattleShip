@@ -21,6 +21,7 @@ namespace BattleShip
         public int hits = 0;
         public int misses = 0;
         public int numberOfShipsSunk = 0;
+        public int numberOfShipsRemaining = 5;
 
         public bool aircraftCarrierSunk = false;
         public bool battleshipSunk = false;
