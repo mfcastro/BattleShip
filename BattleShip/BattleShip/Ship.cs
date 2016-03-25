@@ -21,10 +21,14 @@ namespace BattleShip
         public bool atRight = false;
         public bool atBottom = false;
         public bool pieceIsThere = false;
+       CoordinateLogistic coorlogi = new CoordinateLogistic();
+      
 
 
         public void moveShipDown(Map map, Ship ship)
         {
+            int coordinate = 0;
+
             if (checkIfAtBottomOfMap(map))
             {
                 Console.WriteLine("Can't Move down any more");
@@ -34,26 +38,43 @@ namespace BattleShip
                 if (horizontal == true)
                 {
 
-                    for (int i = 0; i < this.sizeOfShip; i++)
-                    {
-                        map.map[this.yCoordinate][this.xCoordinate + i] = "?";
-                        map.map[this.yCoordinate + 1][this.xCoordinate + i] = ship.gamePiece;
-                    }
+                    Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate + 1, this.xCoordinate + coordinate + this.sizeOfShip - 1);
 
-                    this.yCoordinate += 1;
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    {
+                        Console.WriteLine("There is a ship there already");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < this.sizeOfShip; i++)
+                        {
+                            map.map[this.yCoordinate][this.xCoordinate + i] = "?";
+                            map.map[this.yCoordinate + 1][this.xCoordinate + i] = ship.gamePiece;
+                        }
+
+                        this.yCoordinate += 1;
+                    }
 
                 }
                 else if (vertical == true)
                 {
-                   
-                    for (int i = 0; i < this.sizeOfShip; i++)
+                    Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate +this.sizeOfShip, this.xCoordinate);
+
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
                     {
-                        map.map[this.yCoordinate + i + 1][this.xCoordinate] = ship.gamePiece;
-
+                        Console.WriteLine("There is a ship there already");
                     }
-                    map.map[this.yCoordinate][this.xCoordinate] = "?";
+                    else
+                    {
+                        for (int i = 0; i < this.sizeOfShip; i++)
+                        {
+                            map.map[this.yCoordinate + i + 1][this.xCoordinate] = ship.gamePiece;
 
-                    this.yCoordinate += 1;
+                        }
+                        map.map[this.yCoordinate][this.xCoordinate] = "?";
+
+                        this.yCoordinate += 1;
+                    }
 
                 }
 
@@ -69,6 +90,8 @@ namespace BattleShip
 
         public void moveShipUp(Map map, Ship ship)
         {
+            int coordinate = 0;
+
             if (checkIfAtTopOfMap(map))
             {
                 Console.WriteLine("Can't Move up any more");
@@ -77,26 +100,43 @@ namespace BattleShip
             {
                 if (horizontal == true)
                 {
+                    Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate - 1, this.xCoordinate + coordinate + this.sizeOfShip-1);
 
-                    for (int i = 0; i < this.sizeOfShip; i++)
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
                     {
-                        map.map[this.yCoordinate][this.xCoordinate + i] = "?";
-                        map.map[this.yCoordinate - 1][this.xCoordinate + i] = ship.gamePiece;
-
+                        Console.WriteLine("There is a ship there already");
                     }
-                    this.yCoordinate -= 1;
+                    else
+                    {
+                        for (int i = 0; i < this.sizeOfShip; i++)
+                        {
+                            map.map[this.yCoordinate][this.xCoordinate + i] = "?";
+                            map.map[this.yCoordinate - 1][this.xCoordinate + i] = ship.gamePiece;
+
+                        }
+                        this.yCoordinate -= 1;
+                    }
 
                 }
                 else if (vertical == true)
                 {
-                    for (int i = 0; i < this.sizeOfShip; i++)
+                    Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate -1 , this.xCoordinate);
+
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
                     {
-                        map.map[this.yCoordinate + i - 1][this.xCoordinate] = ship.gamePiece;
-
+                        Console.WriteLine("There is a ship there already");
                     }
-                    map.map[this.yCoordinate + this.sizeOfShip - 1][this.xCoordinate] = "?";
+                    else
+                    {
+                        for (int i = 0; i < this.sizeOfShip; i++)
+                        {
+                            map.map[this.yCoordinate + i - 1][this.xCoordinate] = ship.gamePiece;
 
-                    this.yCoordinate -= 1;
+                        }
+                        map.map[this.yCoordinate + this.sizeOfShip - 1][this.xCoordinate] = "?";
+
+                        this.yCoordinate -= 1;
+                    }
                 }
 
                 Console.WriteLine();
@@ -112,8 +152,9 @@ namespace BattleShip
 
         public void moveShipRight(Map map, Ship ship)
         {
+            int coordinate = 0;
 
-           if (checkIfAtRightOfMap(map))
+            if (checkIfAtRightOfMap(map))
             {
                 Console.WriteLine();
                 Console.WriteLine("You can't move right anymore");
@@ -122,24 +163,43 @@ namespace BattleShip
             {
                 if (horizontal == true)
                 {
-                    for (int i = 0; i < this.sizeOfShip; i++)
-                    {
-                        map.map[this.yCoordinate][this.xCoordinate] = "?";
-                        map.map[this.yCoordinate][this.xCoordinate + i + 1] = ship.gamePiece;
+                    Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate, this.xCoordinate + coordinate+this.sizeOfShip);
 
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    {
+                        Console.WriteLine("There is a ship there already");
                     }
-                    this.xCoordinate += 1;
+                    else
+                    {
+                        for (int i = 0; i < this.sizeOfShip; i++)
+                        {
+                            map.map[this.yCoordinate][this.xCoordinate] = "?";
+                            map.map[this.yCoordinate][this.xCoordinate + i + 1] = ship.gamePiece;
+
+                        }
+                        this.xCoordinate += 1;
+                    }
 
                 }
                 else if (vertical == true)
                 {
-                    for (int i = 0; i < this.sizeOfShip; i++)
-                    {
-                        map.map[this.yCoordinate + i][this.xCoordinate] = "?";
-                        map.map[this.yCoordinate + i][this.xCoordinate + 1] = ship.gamePiece;
-                    }
+                    Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate + coordinate, this.xCoordinate +1);
 
-                    this.xCoordinate += 1;
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    {
+                        Console.WriteLine("There is a ship there already");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < this.sizeOfShip; i++)
+                        {
+                            map.map[this.yCoordinate + i][this.xCoordinate] = "?";
+                            map.map[this.yCoordinate + i][this.xCoordinate + 1] = ship.gamePiece;
+                        }
+
+                        this.xCoordinate += 1;
+                    }
+                   
                 }
 
                 Console.WriteLine();
@@ -156,6 +216,9 @@ namespace BattleShip
 
         public void moveShipLeft(Map map, Ship ship)
         {
+
+            int coordinate = 0;
+            
             if (checkIfAtLeftOfMap(map))
             {
                 Console.WriteLine();
@@ -165,26 +228,43 @@ namespace BattleShip
             {
                 if (horizontal == true)
                 {
-                    
-                        for (int i = 0; i < this.sizeOfShip; i++)
+                    Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate, this.xCoordinate + coordinate - 1);
+
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    {
+                        Console.WriteLine("There is a ship there already");
+                    }
+                   else
+                    {
+                    for (int i = 0; i < this.sizeOfShip; i++) // original 
                         {
                             map.map[this.yCoordinate][this.xCoordinate + i - 1] = ship.gamePiece;
-
+                            coordinate = i;
                         }
                         map.map[this.yCoordinate][this.xCoordinate + this.sizeOfShip - 1] = "?";
 
                         this.xCoordinate -= 1;
-
+                    }
                 }
                 else if (vertical == true)
                 {
-                    for (int i = 0; i < this.sizeOfShip; i++)
-                    {
-                        map.map[this.yCoordinate + i][this.xCoordinate] = "?";
-                        map.map[this.yCoordinate + i][this.xCoordinate - 1] = ship.gamePiece;
-                    }
+                    Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate + coordinate, this.xCoordinate - 1);
 
-                    this.xCoordinate -= 1;
+                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    {
+                        Console.WriteLine("There is a ship there already");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < this.sizeOfShip; i++)
+                        {
+                            map.map[this.yCoordinate + i][this.xCoordinate] = "?";
+                            map.map[this.yCoordinate + i][this.xCoordinate - 1] = ship.gamePiece;
+                        }
+
+                        this.xCoordinate -= 1;
+                    }
+                   
                 }
                 Console.WriteLine();
                 map.drawMap();

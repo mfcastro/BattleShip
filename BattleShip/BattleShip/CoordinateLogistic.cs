@@ -30,7 +30,7 @@ namespace BattleShip
             {
                 for (int shipSection = 0; shipSection < ship.sizeOfShip; shipSection++)
                 {
-                    addCoordinatesToList(ship, shipSection);
+                    addCoordinatesToList(ship, shipSection, map);
 
                 }
             }
@@ -38,13 +38,13 @@ namespace BattleShip
             {
                 for (int shipSection = 0; shipSection < ship.sizeOfShip; shipSection++)
                 {
-                    addCoordinatesToList(ship, shipSection);
+                    addCoordinatesToList(ship, shipSection, map);
 
                 }
             }
         }
 
-        public void addCoordinatesToList(Ship ship, int shipSection)
+        public void addCoordinatesToList(Ship ship, int shipSection, Map map)
         {
             int shipNumber = nameOfShip[ship.shipName];
 
@@ -52,14 +52,15 @@ namespace BattleShip
             if(ship.horizontal == true)
             {
                  Tuple<int, int> coordinates = new Tuple<int, int>(ship.yCoordinate, ship.xCoordinate + shipSection);
-                shipCoordinates[shipNumber].Add(coordinates); 
+                shipCoordinates[shipNumber].Add(coordinates);
+                map.placedShipsOnMap.Add(coordinates);
 
             }
             else if(ship.vertical == true)
             {
                 Tuple<int, int> coordinates = new Tuple<int, int>(ship.yCoordinate + shipSection, ship.xCoordinate);
                 shipCoordinates[shipNumber].Add(coordinates);
-
+                map.placedShipsOnMap.Add(coordinates);
             }
         }
 

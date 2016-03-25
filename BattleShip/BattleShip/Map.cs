@@ -9,6 +9,7 @@ namespace BattleShip
     public class Map
     {
         public List<List<string>> map = new List<List<string>>();
+        public List<Tuple<int, int>> placedShipsOnMap = new List<Tuple<int, int>>();
 
         string[] alphabet = {" ","  ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" , "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC" };
 
