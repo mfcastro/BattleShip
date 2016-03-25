@@ -121,6 +121,9 @@ namespace BattleShip
             setHere = false;
         }
 
+      
+
+
     }
 
 }

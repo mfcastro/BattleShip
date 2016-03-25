@@ -122,7 +122,7 @@ namespace BattleShip
                 {
                     Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate -1 , this.xCoordinate);
 
-                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    if (map.placedShipsOnMap.Contains(tempCoordinate))
                     {
                         Console.WriteLine("There is a ship there already");
                     }
@@ -230,13 +230,13 @@ namespace BattleShip
                 {
                     Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate, this.xCoordinate + coordinate - 1);
 
-                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    if (map.placedShipsOnMap.Contains(tempCoordinate))
                     {
                         Console.WriteLine("There is a ship there already");
                     }
                    else
                     {
-                    for (int i = 0; i < this.sizeOfShip; i++) // original 
+                    for (int i = 0; i < this.sizeOfShip; i++)
                         {
                             map.map[this.yCoordinate][this.xCoordinate + i - 1] = ship.gamePiece;
                             coordinate = i;
@@ -250,7 +250,7 @@ namespace BattleShip
                 {
                     Tuple<int, int> tempCoordinate = new Tuple<int, int>(this.yCoordinate + coordinate, this.xCoordinate - 1);
 
-                    if (map.placedShipsOnMap.Contains(tempCoordinate)) // adding
+                    if (map.placedShipsOnMap.Contains(tempCoordinate))
                     {
                         Console.WriteLine("There is a ship there already");
                     }
@@ -379,7 +379,7 @@ namespace BattleShip
         {
             if(horizontal == true)
             {
-                if (this.xCoordinate == map.mapWidth - sizeOfShip) // this will have to change if you make the map dynamic 
+                if (this.xCoordinate == map.mapWidth - sizeOfShip)
                 {
                     atRight = true;
                     atLeft = false;
@@ -389,7 +389,7 @@ namespace BattleShip
             }
             else if (vertical == true)
             {
-                if (this.xCoordinate == map.mapWidth -1) // this will have to change if you make the map dynamic 
+                if (this.xCoordinate == map.mapWidth -1)
                 {
                     atRight = true;
                     atLeft = false;
@@ -412,7 +412,7 @@ namespace BattleShip
         {
             if(horizontal == true)
             {
-                if (this.yCoordinate == map.mapLength -1) // will need to change it map is dynamic 
+                if (this.yCoordinate == map.mapLength -1) 
                 {
                     atBottom = true;
                     atTop = false;
@@ -422,7 +422,7 @@ namespace BattleShip
             }
             else if(vertical == true)
             {
-                if (this.yCoordinate == map.mapLength - sizeOfShip) // will need to change it map is dynamic 
+                if (this.yCoordinate == map.mapLength - sizeOfShip)
                 {
                     atBottom = true;
                     atTop = false;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BattleShip
 {
@@ -140,6 +141,48 @@ namespace BattleShip
 
             }
 
+
+        public void saveMap()
+        {
+            Console.WriteLine("Name you map:");
+            string mapName = Console.ReadLine();
+
+            using (StreamWriter mapFile = new StreamWriter(mapName+".txt"))
+            {
+                for (int i = 0; i < map.Count; i++)
+                {
+
+                    for (int j = 0; j < map[i].Count; j++)
+                    {
+                        if (map[i][j] == "*")
+                        {
+                            mapFile.Write(map[i][j] + " ");
+                        }
+                        else if (map[i][j] == "X")
+                        {
+                            mapFile.Write(map[i][j] + " ");
+                        }
+                        else if (i == 0 || j == 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            mapFile.Write(map[i][j] + " ");
+                        }
+                        else if (map[i][j] == "A" || map[i][j] == "B" || map[i][j] == "S" || map[i][j] == "D" || map[i][j] == "P")
+                        {
+                            mapFile.Write(map[i][j] + " ");
+                        }
+                        else
+                        {
+                            mapFile.Write(map[i][j] + " ");
+                        }
+                    }
+                    mapFile.WriteLine();
+                }
+
+            }
+           
         }
+
     }
+}
 

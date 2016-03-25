@@ -25,12 +25,16 @@ namespace BattleShip
 
             startMenu(player1);
 
-            //getNewMapSize(player1, player2); // may be temporary
+            doYouWantToSaveMap(player1);
+            
+            Console.ResetColor();
             Console.WriteLine("Player 1 Ships are set. Press <Enter> for Player 2 to set ships.");
             Console.ReadLine();
 
             gameMenu(player2);
+            doYouWantToSaveMap(player2);
 
+            Console.ResetColor();
             Console.WriteLine("Ships are set! Press <Enter> to Start Game!");
             Console.ReadLine();
 
@@ -60,8 +64,7 @@ namespace BattleShip
                 getControlMenu();
                 startMenu(player);
             }
-            
-            else{
+            else {
                 Console.WriteLine();
                 Console.WriteLine("Invalid Entry");
                 startMenu(player);
@@ -162,25 +165,11 @@ namespace BattleShip
         }
 
 
-        /*public void resetShipPlacement(Ship ship, Player player)
-        {
-            player.map.map[ship.yCoordinate][ship.xCoordinate + ship.sizeOfShip - 1] = "X";
-
-        }*/
-
-
         public void prepareStartMap(Player player)
         {
             player.map.fillMap(player.map.mapLength,player.map.mapWidth);
             player.map.drawMap();
         }
-
-        /*public void getAttackMap(Player player)
-        {
-            player.map.fillMap(player.map.mapLength, player.map.mapWidth);
-            player.map.drawMap();
-        }*/
-
 
         public void attackPlayer(Player player)
         {
@@ -383,6 +372,7 @@ namespace BattleShip
             populateHitList(player1);
             populateHitList(player2);
 
+           
 
             while (noWinner)
             {
@@ -455,6 +445,16 @@ namespace BattleShip
 
             return isWinner;
             
+        }
+
+        public void doYouWantToSaveMap(Player player)
+        {
+            Console.WriteLine("Do you want to save Map? [y/n]");
+            ConsoleKeyInfo keyPressed = Console.ReadKey(true);
+            if (keyPressed.KeyChar.Equals('y'))
+            {
+                player.map.saveMap();
+            }
         }
     }
 }
