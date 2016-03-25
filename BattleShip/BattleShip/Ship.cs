@@ -212,20 +212,24 @@ namespace BattleShip
 
         public void rotateShipToVertical(Map map, Ship ship)
         {
+            atRight = false;
+            atLeft = false;
+            atTop = false;
+            atBottom = false;
+
+
+
             for (int i = 0; i < this.sizeOfShip; i++)
             {
                 for(int j = 0; j< this.sizeOfShip; j++)
                 {
-                    map.map[this.yCoordinate][this.yCoordinate + i+1] = "?";
+                    map.map[this.yCoordinate][this.xCoordinate + i+1] = "?";
                     map.map[this.yCoordinate + j][this.xCoordinate] = ship.gamePiece;
                 }
             }
 
             vertical = true;
             horizontal = false;
-            atRight = false;
-            atLeft = false;
-
 
             Console.WriteLine();
             map.drawMap();
@@ -233,11 +237,17 @@ namespace BattleShip
 
         public void rotateShipToHorizontal(Map map, Ship ship)
         {
+
+            atRight = false;
+            atLeft = false;
+            atTop = false;
+            atBottom = false;
+
             for (int i = 0; i < this.sizeOfShip; i++)
             {
                 for (int j = 0; j < this.sizeOfShip; j++)
                 {
-                    map.map[this.yCoordinate + i + 1][this.yCoordinate] = "?";
+                    map.map[this.yCoordinate + i + 1][this.xCoordinate] = "?";
                     map.map[this.yCoordinate][this.xCoordinate + j] = ship.gamePiece;
                 }
 
@@ -245,8 +255,6 @@ namespace BattleShip
 
             vertical = false;
             horizontal = true;
-            atRight = false;
-            atLeft = false;
 
             Console.WriteLine();
             map.drawMap();

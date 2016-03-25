@@ -29,7 +29,7 @@ namespace BattleShip
 
             gameMenu(player2);
 
-            Console.WriteLine("Ships are set! Press Enter to Start Game!");
+            Console.WriteLine("Ships are set! Press <Enter> to Start Game!");
             Console.ReadLine();
 
             turnSwitcher(player1, player2);
@@ -60,7 +60,9 @@ namespace BattleShip
             }
             
             else{
+                Console.WriteLine();
                 Console.WriteLine("Invalid Entry");
+                startMenu(player);
             }
         }
 
